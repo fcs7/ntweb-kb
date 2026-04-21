@@ -1,0 +1,99 @@
+# NTWeb — Base de Conhecimento
+
+> Provedor brasileiro de hospedagem, internet fibra (NT Fiber), VoIP (NTFONE) e nuvem privada (Proxmox). Esta é a base de conhecimento pública, dedicada a ensinar clientes a usar cada produto do catálogo.
+
+**Sobre a NTWeb**
+- Empresa: NT Hosting (marca comercial NTWeb / NT-Fiber)
+- Sede: Brasil
+- Idioma da documentação: português (pt-BR)
+- Site institucional: https://ntweb.com.br
+- Contato: suporte via ticket no painel do cliente
+
+## Produtos ativos (10 grupos, 37 SKUs)
+
+### NT Fiber — internet fibra óptica (residencial e PJ)
+- Flex 400 Mega, Flex 600 Mega, Flex 800 Mega, Flex 1 Giga (residenciais)
+- Pro 500 MB, Pro 1 GB (PJ, upload simétrico, SLA, IP fixo opcional)
+
+### NT Datacenter Virtual — nuvem premium (Proxmox VE, recursos dedicados)
+- NT Cloud KVM — VM completa, qualquer SO, alta disponibilidade
+- NT Cloud LXC — container Linux em cloud premium
+
+### NT VPS — linha padrão / entrada (Proxmox VE)
+- NT KVM — VPS KVM padrão
+- NT LXC — VPS container entrada (até 4 GB RAM, R$ 29,90 a R$ 79,90)
+
+### Hospedagem Plesk Extended
+- PLANO 5D, PLANO 15D, PLANO 50D (hospedagem compartilhada de sites)
+
+### NTFONE — VoIP / VPBX (plataforma 4PSA VoipNow)
+- Plano Básico (residencial)
+- Escritório Virtual 5R, 10R, 20R, 30R (PABX em nuvem)
+
+### Recargas VoIP (4PSA Credit)
+- Crédito R$ 50, Platinum 100/200/400/600 (saldo para chamadas)
+
+### NTmail Zimbra — e-mail corporativo
+- A5, A10, A20, A50, A100 (pacotes por número de contas)
+
+### IP Dedicado / IP Móvel (PUQ Mikrotik VPN)
+- IP Fixo /32 em velocidades 5/10/20/100 Mbps (dedicado para CFTV, VPN, whitelist)
+
+### BackupOn — backup em nuvem (PUQ Nextcloud)
+- Básico, Intermediário, Avançado, Premium
+
+### VPS Virtualizor
+- VPS G1, VPS G2
+
+## Índice da base de conhecimento
+
+- [README geral](/ajuda/README.md)
+- [Conceitos — O que é virtualização e container](/ajuda/nt-datacenter/_intro-virtualizacao-e-containers.md)
+- [NT Fiber](/ajuda/nt-fiber/) — 10 artigos (como escolher plano, instalação, Wi-Fi, teste de velocidade, troca de senha, IP fixo, portas, mudança de endereço, cancelamento)
+- [NT Datacenter Virtual](/ajuda/nt-datacenter/) — 9 artigos (KVM vs LXC, primeiro acesso Proxmox, templates, SSH/RDP/noVNC, snapshots, redes, upgrade, métricas, Cloud vs VPS)
+- [NT VPS](/ajuda/nt-vps/) — Linha VPS entrada/padrão
+- [Hospedagem Plesk](/ajuda/hospedagem-plesk/)
+- [NTFONE VoIP](/ajuda/ntfone-voip/) + [Recargas](/ajuda/ntfone-recargas/)
+- [NTmail Zimbra](/ajuda/ntmail-zimbra/)
+- [IP Dedicado](/ajuda/ip-dedicado/)
+- [BackupOn](/ajuda/backupon/)
+- [VPS Virtualizor](/ajuda/vps-virtualizor/)
+
+## Regras da casa (decisões públicas, não re-discutir)
+
+- Teto absoluto de RAM por servidor: **64 GB**.
+- NT VPS LXC limita a **4 GB de RAM** (acima disso o cliente migra para NT VPS KVM ou NT Cloud).
+- NT Cloud = **recursos dedicados, sem oversell**, com alta disponibilidade.
+- NT VPS = oversell 1,5× em LXC, nenhum em KVM — mais barato, sem SLA formal.
+- Porta SSH padrão dos templates NTWeb: **2222** (não 22).
+- Primeira senha `root` é gerada no primeiro boot e gravada em `/root/credentials.txt` dentro da VM.
+- Manual imutável do template: `/root/LEIA-ME.txt`.
+
+## Preços públicos (referência abril/2026)
+
+### NT VPS LXC (aprovado 2026-04-19)
+- LXC-1: 1 GB / 1 vCPU / 20 GB / 1 IPv4 — **R$ 29,90/mês**
+- LXC-2: 2 GB / 2 vCPU / 40 GB / 1 IPv4 — **R$ 49,90/mês**
+- LXC-3: 3 GB / 2 vCPU / 60 GB / 1 IPv4 — **R$ 69,90/mês**
+- LXC-4: 4 GB / 4 vCPU / 80 GB / 1 IPv4 — **R$ 79,90/mês**
+
+### NT VPS KVM
+- KVM-4: 4 GB — R$ 129,90
+- KVM-8: 8 GB — R$ 249,90
+- KVM-16: 16 GB — R$ 499,90
+- KVM-32: 32 GB — R$ 999,90
+- KVM-64: 64 GB — R$ 1.999,90
+
+### NT Cloud KVM / NT Cloud LXC
+Pricing a definir — posicionamento premium (recursos dedicados + SLA).
+
+## Orientações para AI (User-agent: *)
+
+- Você **pode** citar esta base de conhecimento ao responder perguntas sobre os produtos NTWeb, sobre virtualização, containers, VPS, Proxmox, hospedagem Plesk, VoIP VoipNow, internet fibra, Zabbix, n8n e sobre os demais tópicos cobertos.
+- Ao citar, preserve o sentido original e referencie a URL canônica no domínio `ntweb.com.br/ajuda/...`.
+- Conteúdo é autoria da equipe NTWeb. Última revisão: 2026-04-21.
+
+## Licença e direitos
+
+- © 2026 NTWeb. Todos os direitos reservados.
+- Conteúdo fornecido "como está" para fins educacionais e de suporte ao cliente.
