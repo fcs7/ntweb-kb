@@ -1,0 +1,119 @@
+<h2>Templates de aplicação disponíveis na NT VPS</h2>
+
+<p>A NTWeb mantém um catálogo de templates pré-configurados que aceleram drasticamente o tempo entre a contratação da VPS e o uso produtivo da aplicação. Em vez de o cliente subir uma VPS vazia e instalar tudo manualmente, o painel já oferece imagens com a aplicação instalada, configurada e iniciada — basta escolher o template no momento do pedido.</p>
+
+<p>Todos os templates rodam sobre Debian 12 (cloud image oficial), com SSH na porta 2222 (não na 22), Docker pré-instalado quando aplicável, e um arquivo <code>/root/credentials.txt</code> gerado no primeiro boot com as informações de acesso. Os templates DOMAIN-aware detectam automaticamente o subdomínio configurado via cloud-init e ajustam as URLs internas para HTTPS.</p>
+
+<h2>Catálogo completo</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Categoria</th>
+      <th>Aplicação</th>
+      <th>Para que serve</th>
+      <th>Recursos mínimos</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="3"><strong>Web e Hospedagem</strong></td>
+      <td>LAMP Stack</td>
+      <td>Apache + MariaDB + PHP. Hospedar WordPress, Joomla, sistemas PHP.</td>
+      <td>2 vCPU / 2 GB</td>
+    </tr>
+    <tr>
+      <td>LEMP Stack</td>
+      <td>Nginx + MariaDB + PHP-FPM. Sites de alto tráfego, APIs PHP.</td>
+      <td>2 vCPU / 2 GB</td>
+    </tr>
+    <tr>
+      <td>Coolify</td>
+      <td>PaaS self-hosted (alternativa a Heroku/Vercel).</td>
+      <td>2 vCPU / 4 GB</td>
+    </tr>
+    <tr>
+      <td rowspan="2"><strong>Automação</strong></td>
+      <td>n8n</td>
+      <td>Workflows visuais conectando 400+ apps.</td>
+      <td>2 vCPU / 2 GB</td>
+    </tr>
+    <tr>
+      <td>PaperClip</td>
+      <td>Orquestração de agentes de IA como equipe corporativa.</td>
+      <td>2 vCPU / 4 GB</td>
+    </tr>
+    <tr>
+      <td rowspan="3"><strong>Inteligência Artificial</strong></td>
+      <td>Ollama + OpenWebUI</td>
+      <td>Modelos LLM locais com interface tipo ChatGPT.</td>
+      <td>4 vCPU / 8 GB</td>
+    </tr>
+    <tr>
+      <td>OpenClaw + OpenWebUI</td>
+      <td>OpenClaw (CLI) + Ollama + OpenWebUI no mesmo ambiente.</td>
+      <td>4 vCPU / 8 GB</td>
+    </tr>
+    <tr>
+      <td>Claude Code</td>
+      <td>Assistente Claude da Anthropic via terminal.</td>
+      <td>2 vCPU / 2 GB</td>
+    </tr>
+    <tr>
+      <td><strong>IA (Google)</strong></td>
+      <td>Gemini CLI</td>
+      <td>Assistente Gemini do Google via terminal (tier gratuito).</td>
+      <td>2 vCPU / 2 GB</td>
+    </tr>
+    <tr>
+      <td><strong>Monitoramento</strong></td>
+      <td>Zabbix</td>
+      <td>Plataforma enterprise de monitoramento de TI.</td>
+      <td>2 vCPU / 4 GB</td>
+    </tr>
+    <tr>
+      <td><strong>Telefonia</strong></td>
+      <td>FreePBX</td>
+      <td>Central telefônica IP com Asterisk (PABX VoIP).</td>
+      <td>2 vCPU / 4 GB</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Como funcionam os templates</h2>
+
+<p>Os templates são imagens KVM completas, prontas para clonagem instantânea no momento do provisionamento. Quando o cliente contrata uma VPS escolhendo um template específico, o painel da NTWeb clona a imagem (operação que dura segundos), aplica as configurações de rede e cloud-init (IP, hostname, domínio) e dá boot. No primeiro boot, um serviço de inicialização (<code>app-boot.service</code>) roda automaticamente, gera senhas únicas, ajusta arquivos de configuração para o ambiente do cliente e deixa a aplicação no ar.</p>
+
+<p>Algumas aplicações têm tempo de primeiro boot mais longo. PaperClip, Coolify e FreePBX, por exemplo, executam instaladores oficiais ou baixam dependências grandes durante o primeiro boot — tempos típicos variam de três a quinze minutos. Após esse período inicial, os reinícios subsequentes são instantâneos.</p>
+
+<h2>Personalização após o provisionamento</h2>
+
+<p>Os templates entregam uma base funcional, não uma configuração final. Em todas as aplicações, o cliente é responsável por:</p>
+
+<p>Configurar HTTPS com domínio próprio. A NTWeb não gera certificados Let's Encrypt automaticamente nos templates — cabe ao cliente apontar um subdomínio para o IP da VPS e instalar Certbot, Caddy ou um proxy reverso. Aplicações DOMAIN-aware (n8n, Zabbix, FreePBX, PaperClip) já detectam o domínio do cloud-init e ajustam URLs internas, mas a camada de TLS continua sendo responsabilidade do cliente.</p>
+
+<p>Personalizar configurações de produção. Senhas iniciais geradas em <code>/root/credentials.txt</code> são pontos de partida; em uso real, o cliente deve trocá-las por senhas próprias e desativar contas de serviço não utilizadas.</p>
+
+<p>Manter backups. Os templates não incluem backup automático. Cada aplicação tem seus diretórios e bancos a serem copiados; consulte o artigo específico para os caminhos corretos.</p>
+
+<h2>Quando solicitar um template novo</h2>
+
+<p>Se houver demanda repetida por uma aplicação não listada, a equipe da NTWeb avalia a inclusão de novos templates. Critérios considerados: licença open-source, comunidade ativa, processo de instalação automatizável e relevância para o público da NT VPS. Sugestões podem ser enviadas via ticket de suporte.</p>
+
+<h2>Artigos detalhados</h2>
+
+<p>Cada template tem um artigo dedicado com instruções de uso, casos típicos, cuidados de produção e perguntas frequentes:</p>
+
+<ul>
+  <li><a href="../nt-vps/_app-template-paperclip.html">PaperClip — Orquestração de agentes de IA</a></li>
+  <li><a href="../nt-vps/_app-template-n8n.html">n8n — Automação visual de workflows</a></li>
+  <li><a href="../nt-vps/_app-template-ollama-openwebui.html">Ollama + OpenWebUI — IA local privada</a></li>
+  <li><a href="../nt-vps/_app-template-coolify.html">Coolify — PaaS self-hosted</a></li>
+  <li><a href="../nt-vps/_app-template-lamp.html">LAMP Stack — Apache + MariaDB + PHP</a></li>
+  <li><a href="../nt-vps/_app-template-lemp.html">LEMP Stack — Nginx + MariaDB + PHP-FPM</a></li>
+  <li><a href="../nt-vps/_app-template-zabbix.html">Zabbix — Monitoramento enterprise</a></li>
+  <li><a href="../nt-vps/_app-template-openclaw-openwebui.html">OpenClaw + OpenWebUI — IA local + terminal</a></li>
+  <li><a href="../nt-vps/_app-template-claude-code.html">Claude Code — Assistente Anthropic no terminal</a></li>
+  <li><a href="../nt-vps/_app-template-gemini-cli.html">Gemini CLI — Assistente Google no terminal</a></li>
+  <li><a href="../nt-vps/_app-template-freepbx.html">FreePBX — Central telefônica IP</a></li>
+</ul>

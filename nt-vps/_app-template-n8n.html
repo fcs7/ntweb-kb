@@ -1,0 +1,59 @@
+<h2>O que é o n8n</h2>
+
+<p>O n8n é uma plataforma de automação de fluxos de trabalho que permite conectar centenas de aplicações e serviços por meio de uma interface visual de arrastar e soltar. Em vez de escrever código, o usuário monta um fluxo arrastando blocos (chamados de "nós") que representam ações como "ler e-mail", "enviar mensagem no Slack", "consultar API", "atualizar planilha do Google" ou "salvar registro no banco de dados".</p>
+
+<p>O projeto é mantido pela empresa n8n.io e oferecido em duas modalidades: uma versão hospedada na nuvem do fornecedor e a versão self-hosted, que é a que roda no template da NTWeb. A versão self-hosted dá ao cliente controle total sobre os dados e elimina o custo recorrente da assinatura na nuvem.</p>
+
+<h2>O que vem pronto na VPS NT</h2>
+
+<p>O template <strong>n8n</strong> da NTWeb (VMID 5101) entrega o n8n rodando em contêiner Docker, com basic authentication ativada por padrão. A senha de acesso é gerada automaticamente no primeiro boot e fica disponível em <code>/root/credentials.txt</code>.</p>
+
+<table>
+  <thead>
+    <tr><th>Item</th><th>Valor</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Sistema operacional</td><td>Debian 12</td></tr>
+    <tr><td>Stack</td><td>Docker + n8nio/n8n:latest</td></tr>
+    <tr><td>Porta da aplicação</td><td>5678</td></tr>
+    <tr><td>Porta SSH</td><td>2222</td></tr>
+    <tr><td>Recursos recomendados</td><td>2 vCPU / 2 GB de RAM</td></tr>
+    <tr><td>Autenticação inicial</td><td>basic auth gerada no primeiro boot</td></tr>
+  </tbody>
+</table>
+
+<h2>Como acessar pela primeira vez</h2>
+
+<p>Após o provisionamento, o cliente acessa <code>http://&lt;IP&gt;:5678</code> e é apresentado a um diálogo de autenticação básica. Usuário é <code>admin</code>; a senha está em <code>/root/credentials.txt</code>, acessível por SSH na porta 2222.</p>
+
+<p>Logo após o login da basic auth, o n8n exibe a tela de configuração do usuário "owner" — esse é o administrador da instância. Após criar o owner, o painel completo do n8n fica disponível e o cliente pode começar a montar os primeiros fluxos.</p>
+
+<h2>Casos de uso típicos</h2>
+
+<p>Um caso clássico é a automação de leads: quando um formulário é preenchido no site, o n8n recebe os dados via webhook, valida o CNPJ em uma API pública, salva o lead no CRM, dispara um e-mail de boas-vindas e notifica a equipe comercial no Slack — tudo em segundos, sem ação humana.</p>
+
+<p>Outras automações comuns incluem sincronizar produtos entre uma loja Shopify e o ERP da empresa, enviar relatórios diários de métricas para um canal interno, processar arquivos enviados por e-mail e arquivá-los em pastas organizadas no Drive, e integrar sistemas legados que não têm conector nativo entre si.</p>
+
+<h2>Cuidados e boas práticas</h2>
+
+<p>Por padrão, o n8n exige HTTPS para funcionar com cookies seguros. Quando o cliente acessa o painel apenas pelo IP da VPS, sem certificado TLS, o sistema mostra um aviso sobre cookie inseguro. Há duas formas de resolver: desabilitar o cookie seguro temporariamente (rápido, ideal para testes) ou colocar um proxy HTTPS na frente do n8n (recomendado para produção). O arquivo <code>/root/LEIA-ME.txt</code> traz o passo a passo das duas opções.</p>
+
+<p>O volume Docker <code>n8n_data</code> guarda todos os fluxos e credenciais criptografadas do n8n. Backup desse volume é essencial antes de qualquer atualização. Em produção, o cliente também deve configurar a variável <code>WEBHOOK_URL</code> com o domínio público correto, sob pena de webhooks externos falharem.</p>
+
+<h2>Perguntas frequentes</h2>
+
+<h3>O n8n é totalmente gratuito?</h3>
+
+<p>A versão self-hosted que roda no template da NTWeb é open-source sob a licença Sustainable Use, gratuita para uso interno. A empresa n8n.io oferece licenças comerciais separadas para quem quer revender o produto a terceiros.</p>
+
+<h3>Quantos fluxos posso rodar em uma VPS de 2 GB?</h3>
+
+<p>Para fluxos simples e de baixa frequência, dezenas. Para fluxos pesados (manipulação de arquivos grandes, IA generativa, lotes de milhares de registros), recomenda-se subir para 4 GB ou mais.</p>
+
+<h3>Posso integrar com sistemas que não têm conector pronto?</h3>
+
+<p>Sim. O n8n tem nós genéricos de HTTP Request e Function (JavaScript) que permitem chamar qualquer API ou escrever lógica personalizada. Praticamente qualquer sistema com API REST ou webhook é integrável.</p>
+
+<h3>Onde encontro a documentação oficial?</h3>
+
+<p>Documentação completa em <a href="https://docs.n8n.io/" target="_blank" rel="noopener noreferrer">docs.n8n.io</a>.</p>

@@ -1,0 +1,57 @@
+<h2>O que são Ollama e OpenWebUI</h2>
+
+<p>O Ollama é um servidor que roda modelos de linguagem (LLMs) localmente, sem necessidade de enviar dados a serviços externos. Ele suporta dezenas de modelos open-source, como Llama 3, Mistral, DeepSeek, Phi, Gemma, Qwen e variantes especializadas em código (CodeLlama, DeepSeek-Coder).</p>
+
+<p>O OpenWebUI é uma interface web parecida com o ChatGPT, mas que se conecta ao Ollama em vez de a uma API externa. Combinados, os dois oferecem uma experiência de IA conversacional 100% privada — todas as perguntas, anexos e respostas ficam apenas na VPS do cliente.</p>
+
+<h2>O que vem pronto na VPS NT</h2>
+
+<p>O template <strong>Ollama + OpenWebUI</strong> (VMID 5102) traz os dois serviços em contêineres Docker, com a interface web exposta na porta 3000. O Ollama escuta apenas em loopback por segurança — todo o acesso é mediado pelo OpenWebUI.</p>
+
+<table>
+  <thead><tr><th>Item</th><th>Valor</th></tr></thead>
+  <tbody>
+    <tr><td>Sistema operacional</td><td>Debian 12</td></tr>
+    <tr><td>Stack</td><td>Docker — Ollama + OpenWebUI</td></tr>
+    <tr><td>Porta da aplicação</td><td>3000 (interface web)</td></tr>
+    <tr><td>Porta SSH</td><td>2222</td></tr>
+    <tr><td>Recursos mínimos</td><td>4 vCPU / 8 GB de RAM</td></tr>
+    <tr><td>Recursos recomendados</td><td>VPS com GPU dedicada para modelos &gt;7B</td></tr>
+  </tbody>
+</table>
+
+<h2>Como acessar pela primeira vez</h2>
+
+<p>O cliente acessa <code>http://&lt;IP&gt;:3000</code> e é direcionado à tela de cadastro. O primeiro usuário a se cadastrar se torna o administrador da instância. A partir do painel, é possível ir em <em>Settings → Models</em> e baixar modelos sob demanda, ou usar o terminal SSH para executar <code>ollama pull llama3</code>.</p>
+
+<p>Modelos pequenos (3 a 7 bilhões de parâmetros) rodam aceitavelmente em CPU. Modelos maiores (13B, 30B, 70B) exigem GPU dedicada para tempo de resposta razoável. Para cargas profissionais, recomenda-se VPS com GPU NVIDIA.</p>
+
+<h2>Casos de uso típicos</h2>
+
+<p>O combo Ollama + OpenWebUI é ideal para empresas que precisam usar IA generativa sem expor dados sensíveis a APIs externas. Cenários comuns incluem: análise de contratos jurídicos sem enviar texto ao ChatGPT, atendimento interno em empresas com NDA rígido, geração de código com CodeLlama em projetos confidenciais, e geração de documentação técnica com modelos especializados.</p>
+
+<p>Para uso pessoal, o cliente pode ter um "ChatGPT particular" que respeita 100% da privacidade, sem cota de uso, sem censura excessiva e sem custo recorrente por token.</p>
+
+<h2>Cuidados e boas práticas</h2>
+
+<p>Modelos de IA local consomem muita RAM e disco. Cada modelo de 7B ocupa aproximadamente 4 a 8 GB de armazenamento. Antes de baixar vários modelos, o cliente deve dimensionar o disco da VPS adequadamente. O OpenWebUI também armazena histórico de conversas — backup periódico do volume Docker é recomendado.</p>
+
+<p>Em redes públicas, o cliente deve sempre colocar HTTPS na frente do OpenWebUI (Nginx ou Caddy com Let's Encrypt). A interface por padrão está em HTTP, e logins de usuários trafegam em texto claro caso não haja TLS.</p>
+
+<h2>Perguntas frequentes</h2>
+
+<h3>Preciso de GPU para usar?</h3>
+
+<p>Não obrigatoriamente. Modelos de até 7B parâmetros rodam em CPU com tempo de resposta entre 10 e 60 segundos por mensagem. GPU melhora drasticamente a velocidade, especialmente em modelos maiores.</p>
+
+<h3>Posso usar com modelos comerciais como GPT-4 ou Claude?</h3>
+
+<p>Sim. O OpenWebUI também suporta conexões a APIs externas (OpenAI, Anthropic, Google) configuradas em <em>Settings → Connections</em>. O cliente pode misturar modelos locais e modelos pagos no mesmo painel.</p>
+
+<h3>Quais modelos recomendados para começar?</h3>
+
+<p>Llama 3.1 (8B) para uso geral, Mistral Nemo (12B) para tarefas mais elaboradas, DeepSeek-Coder (6.7B) para programação. Todos rodam em CPU com VPS de 8 a 16 GB de RAM.</p>
+
+<h3>Onde encontro a documentação oficial?</h3>
+
+<p>Ollama: <a href="https://ollama.com/library" target="_blank" rel="noopener noreferrer">ollama.com</a>. OpenWebUI: <a href="https://docs.openwebui.com/" target="_blank" rel="noopener noreferrer">docs.openwebui.com</a>.</p>

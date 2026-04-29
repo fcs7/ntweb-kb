@@ -1,0 +1,61 @@
+<h2>O que é o Claude Code</h2>
+
+<p>O Claude Code é a ferramenta de linha de comando oficial da Anthropic para usar o modelo Claude diretamente no terminal. Ele transforma a IA em um agente que lê arquivos do sistema, edita código-fonte, executa comandos shell, debuga problemas e administra servidores — tudo sob a supervisão do usuário, com confirmação a cada ação que altere o estado do sistema.</p>
+
+<p>É voltado a desenvolvedores e administradores de sistemas que querem ter um assistente Claude com acesso direto ao ambiente, sem o limite de copiar e colar trechos de código entre o navegador e o editor.</p>
+
+<h2>O que vem pronto na VPS NT</h2>
+
+<p>O template <strong>Claude Code</strong> (VMID 5108) entrega Node.js 20 LTS, Git, ferramentas de build e o pacote <code>@anthropic-ai/claude-code</code> instalado globalmente via npm. Após o provisionamento, basta conectar via SSH na porta 2222, configurar a chave de API da Anthropic e executar <code>claude</code>.</p>
+
+<table>
+  <thead><tr><th>Item</th><th>Valor</th></tr></thead>
+  <tbody>
+    <tr><td>Sistema operacional</td><td>Debian 12</td></tr>
+    <tr><td>Stack</td><td>Node.js 20 + git + build-essential</td></tr>
+    <tr><td>Pacote principal</td><td>@anthropic-ai/claude-code (npm global)</td></tr>
+    <tr><td>Porta SSH</td><td>2222</td></tr>
+    <tr><td>Recursos recomendados</td><td>2 vCPU / 2 GB de RAM</td></tr>
+    <tr><td>Pré-requisito</td><td>chave de API da Anthropic (paga)</td></tr>
+  </tbody>
+</table>
+
+<h2>Como acessar pela primeira vez</h2>
+
+<p>Conecte via SSH na porta 2222. Configure a chave de API exportando a variável de ambiente:</p>
+
+<pre><code>export ANTHROPIC_API_KEY="sk-ant-sua-chave-aqui"</code></pre>
+
+<p>Para tornar a configuração permanente, adicione essa linha ao final do arquivo <code>~/.bashrc</code>. Em seguida, basta digitar <code>claude</code> em qualquer momento para iniciar uma sessão. O Claude Code lê o diretório atual, oferece edição de arquivos, execução de comandos e interação contínua até a tarefa estar pronta.</p>
+
+<p>A chave de API é obtida em <a href="https://console.anthropic.com/" target="_blank" rel="noopener noreferrer">console.anthropic.com</a>. O uso do Claude Code é cobrado pela API por token consumido, conforme a tabela vigente da Anthropic.</p>
+
+<h2>Casos de uso típicos</h2>
+
+<p>Desenvolvedores usam o Claude Code para implementar features completas a partir de uma descrição em linguagem natural, refatorar código legado em projetos grandes, debugar problemas que exigem leitura de múltiplos arquivos, gerar testes unitários para classes existentes e automatizar tarefas repetitivas de manutenção. Como o Claude tem acesso ao sistema de arquivos, ele consegue trabalhar em projetos completos, não apenas em trechos isolados.</p>
+
+<p>Administradores de sistemas usam para diagnosticar logs complexos, escrever scripts de automação ad-hoc, configurar serviços com base em documentação interna e auditar configurações em servidores. A capacidade de executar comandos com confirmação reduz drasticamente o tempo de tarefas operacionais.</p>
+
+<h2>Cuidados e boas práticas</h2>
+
+<p>O Claude Code é um agente com capacidade de modificar arquivos e executar comandos. Cada ação destrutiva pede confirmação, mas o usuário deve revisar com atenção. Em ambientes de produção, recomenda-se rodar o Claude Code apenas em máquinas com acesso restrito e nunca como root em servidores críticos sem snapshot prévio.</p>
+
+<p>O custo da API é cobrado por uso. Sessões longas e projetos grandes consomem mais tokens. A própria interface do Claude Code mostra o consumo em tempo real. A Anthropic oferece limites de gasto na conta para evitar surpresas.</p>
+
+<h2>Perguntas frequentes</h2>
+
+<h3>O Claude Code é gratuito?</h3>
+
+<p>A ferramenta CLI é gratuita, mas exige uma chave de API da Anthropic, que é cobrada por token consumido. Há tier gratuito modesto para começar; uso pesado profissional implica em assinatura paga.</p>
+
+<h3>Posso usar o Claude Code em projetos confidenciais?</h3>
+
+<p>Sim, mas o cliente deve estar ciente de que o conteúdo dos arquivos lidos pelo Claude é enviado à API da Anthropic para processamento. A Anthropic tem políticas de não-treinamento sobre dados de clientes pagantes, mas a decisão final sobre quais arquivos compartilhar é do usuário.</p>
+
+<h3>Funciona offline?</h3>
+
+<p>Não. A inferência acontece nos servidores da Anthropic. Para ambientes sem internet, considere modelos locais via Ollama no template OpenClaw + OpenWebUI.</p>
+
+<h3>Onde encontro documentação oficial?</h3>
+
+<p>Documentação completa em <a href="https://docs.claude.com/claude-code" target="_blank" rel="noopener noreferrer">docs.claude.com/claude-code</a>.</p>

@@ -1,0 +1,60 @@
+<h2>O que é o stack LAMP</h2>
+
+<p>LAMP é a sigla clássica para Linux + Apache + MariaDB + PHP — a combinação de software livre que sustenta a maior parte da web mundial. É a fundação de plataformas como WordPress, Joomla, Drupal, Magento, PrestaShop e milhares de aplicações corporativas em PHP.</p>
+
+<p>O nome "MariaDB" entra no lugar do tradicional "M" de MySQL porque o MariaDB é o sucessor open-source independente do MySQL, mantido pelos criadores originais do projeto. Ele é totalmente compatível com aplicações que esperam MySQL.</p>
+
+<h2>O que vem pronto na VPS NT</h2>
+
+<p>O template <strong>LAMP</strong> da NTWeb (VMID 5104) já entrega o stack instalado, configurado e iniciado. O Apache responde na porta 80, o MariaDB tem senha de root gerada no primeiro boot (disponível em <code>/root/credentials.txt</code>) e os módulos PHP mais usados pelas plataformas populares já vêm instalados.</p>
+
+<table>
+  <thead><tr><th>Item</th><th>Valor</th></tr></thead>
+  <tbody>
+    <tr><td>Sistema operacional</td><td>Debian 12</td></tr>
+    <tr><td>Web server</td><td>Apache 2.4</td></tr>
+    <tr><td>Banco de dados</td><td>MariaDB 10.11</td></tr>
+    <tr><td>Linguagem</td><td>PHP 8.2 (mod_php)</td></tr>
+    <tr><td>Porta da aplicação</td><td>80 (HTTP)</td></tr>
+    <tr><td>Porta SSH</td><td>2222</td></tr>
+    <tr><td>Recursos recomendados</td><td>2 vCPU / 2 GB de RAM</td></tr>
+  </tbody>
+</table>
+
+<p>Os módulos PHP pré-instalados incluem mysql, curl, mbstring, zip, gd, xml, intl e cli. O <code>mod_rewrite</code> do Apache também já vem habilitado, o que é requisito para URLs amigáveis no WordPress e na maioria dos frameworks PHP.</p>
+
+<h2>Como acessar pela primeira vez</h2>
+
+<p>O acesso administrativo é via SSH na porta 2222. A senha de root do MariaDB está em <code>/root/credentials.txt</code> e é usada para criar bancos e usuários para cada aplicação.</p>
+
+<p>Para hospedar um site, basta colocar os arquivos em <code>/var/www/html/</code>. Esse é o DocumentRoot padrão do Apache. Acesse <code>http://&lt;IP&gt;/</code> e a página de teste do Apache (ou seu próprio index.php) será exibida.</p>
+
+<h2>Casos de uso típicos</h2>
+
+<p>O LAMP é a escolha natural para hospedar sites WordPress, sistemas legados em PHP, instalações corporativas como Magento, Moodle (ensino a distância), Joomla, Drupal e CMS personalizados. Empresas que migram de hospedagem compartilhada para VPS encontram no template LAMP exatamente o ambiente que já estavam acostumadas a usar.</p>
+
+<p>Desenvolvedores também usam o LAMP como ambiente de homologação espelho do servidor de produção, garantindo paridade de versões PHP e MariaDB entre os ambientes.</p>
+
+<h2>Cuidados e boas práticas</h2>
+
+<p>O Apache vem com configuração padrão. Para múltiplos sites na mesma VPS, o cliente deve criar virtual hosts em <code>/etc/apache2/sites-available/</code> e habilitá-los com <code>a2ensite</code>. Para HTTPS, o caminho recomendado é instalar o Certbot (<a href="https://certbot.eff.org/" target="_blank" rel="noopener noreferrer">certbot.eff.org</a>) e gerar certificados Let's Encrypt automáticos.</p>
+
+<p>O backup mínimo recomendado é despejar bancos com <code>mysqldump</code> e copiar o conteúdo de <code>/var/www/html/</code>. Para automatizar, scripts de cron podem rodar diariamente e enviar os arquivos a um storage externo. Senha do root MariaDB nunca deve ser compartilhada — para aplicações, crie usuários dedicados com privilégios apenas no banco específico.</p>
+
+<h2>Perguntas frequentes</h2>
+
+<h3>Posso instalar WordPress nesta VPS?</h3>
+
+<p>Sim. Basta baixar o WordPress, descompactar em <code>/var/www/html/</code>, criar um banco MariaDB e seguir o instalador web. Todo o stack necessário já está configurado.</p>
+
+<h3>Como ativo HTTPS?</h3>
+
+<p>Instale o Certbot com <code>apt install certbot python3-certbot-apache</code> e execute <code>certbot --apache -d seudominio.com.br</code>. O Certbot gera o certificado, configura o Apache e renova automaticamente.</p>
+
+<h3>Qual a diferença entre LAMP e LEMP?</h3>
+
+<p>O "A" é Apache; o "E" (de Engine-X) é Nginx. Apache é mais flexível para regras .htaccess e plugins WordPress; Nginx é mais leve e rápido em sites de alto tráfego. Ambos hospedam as mesmas aplicações PHP.</p>
+
+<h3>Onde encontro documentação oficial?</h3>
+
+<p>Apache: <a href="https://httpd.apache.org/docs/" target="_blank" rel="noopener noreferrer">httpd.apache.org/docs</a>. MariaDB: <a href="https://mariadb.com/kb/en/" target="_blank" rel="noopener noreferrer">mariadb.com/kb</a>. PHP: <a href="https://www.php.net/manual/pt_BR/" target="_blank" rel="noopener noreferrer">php.net</a>.</p>

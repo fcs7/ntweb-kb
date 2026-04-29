@@ -1,0 +1,78 @@
+<h2>O que é o PaperClip</h2>
+
+<p>O PaperClip é uma plataforma open-source para orquestrar agentes de inteligência artificial como se fossem uma equipe corporativa. Em vez de interagir com um único modelo de IA por vez, o cliente define a missão da empresa, atribui papéis hierárquicos (CEO, CTO, engenheiro, marketing, vendas) e os agentes passam a delegar tarefas entre si por meio de tickets, todos rastreáveis em um painel único.</p>
+
+<p>O projeto é mantido pela comunidade <a href="https://github.com/paperclipai/paperclip" target="_blank" rel="noopener noreferrer">paperclipai/paperclip</a> sob licença MIT, soma mais de 60 mil estrelas no GitHub e roda inteiramente na VPS do cliente — nenhum dado é enviado a serviços terceiros, exceto as chamadas que os próprios agentes fazem aos provedores de modelo (OpenAI, Anthropic, etc.).</p>
+
+<h2>O que vem pronto na VPS NT</h2>
+
+<p>O template <strong>PaperClip</strong> da NTWeb (VMID 5111) já vem com Node.js 20 LTS, dependências de build, banco PostgreSQL embutido e um serviço de sistema (<code>paperclip.service</code>) que mantém o PaperClip rodando entre reinicializações. A porta 3100 é a porta padrão da interface web. O acesso administrativo via SSH é feito pela porta <strong>2222</strong>, não pela 22.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Item</th>
+      <th>Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>Sistema operacional</td><td>Debian 12</td></tr>
+    <tr><td>Stack</td><td>Node.js 20 + PostgreSQL embutido</td></tr>
+    <tr><td>Porta da aplicação</td><td>3100</td></tr>
+    <tr><td>Porta SSH</td><td>2222</td></tr>
+    <tr><td>Recursos recomendados</td><td>2 vCPU / 4 GB de RAM</td></tr>
+    <tr><td>Licença do software</td><td>MIT (open-source)</td></tr>
+  </tbody>
+</table>
+
+<h2>Como acessar pela primeira vez</h2>
+
+<p>Após a contratação, o painel da NTWeb provisiona automaticamente a VPS com o template selecionado. O primeiro boot leva entre três e cinco minutos, pois o servidor faz o download dos pacotes Node necessários para o PaperClip.</p>
+
+<p>Durante esse intervalo, o serviço ainda não responde. O cliente pode acompanhar o progresso conectando-se via SSH e executando <code>journalctl -u app-boot.service -f</code>. Quando o boot conclui, o arquivo <code>/root/credentials.txt</code> é criado com a URL exata para acesso à interface web.</p>
+
+<p>Há duas formas de acesso à interface, dependendo da configuração de domínio:</p>
+
+<h3>Sem domínio personalizado</h3>
+
+<p>O acesso é feito diretamente pelo IP da VPS, no endereço <code>http://&lt;IP&gt;:3100</code>. É a forma mais rápida para testes e ambientes internos. Não há criptografia HTTPS por padrão neste modo, então não é recomendado para uso em produção pública.</p>
+
+<h3>Com domínio personalizado</h3>
+
+<p>Se o cliente apontar um subdomínio (por exemplo, <code>paperclip.minhaempresa.com.br</code>) para o IP da VPS antes da contratação ou no momento do provisionamento, o template detecta o domínio automaticamente via cloud-init e exibe a URL no formato <code>https://seudominio</code>. Para que o HTTPS funcione, o cliente deve instalar um proxy reverso como Nginx ou Caddy na frente da porta 3100, com certificado Let's Encrypt.</p>
+
+<p>Na primeira visita à interface, o PaperClip exibe a tela de cadastro inicial. O primeiro usuário criado se torna o administrador da instância. A partir daí, o cliente pode definir a missão da empresa e começar a configurar agentes e papéis.</p>
+
+<h2>Casos de uso típicos</h2>
+
+<p>O PaperClip se destaca em cenários onde múltiplas tarefas precisam ser coordenadas por agentes especializados, com supervisão humana mínima. Equipes de marketing usam o produto para gerar e revisar campanhas, com um agente "redator", outro "revisor" e um "diretor de marketing" aprovando o resultado. Times de desenvolvimento delegam tarefas como triagem de issues, geração de documentação e revisão de pull requests para agentes que se reportam a um agente "tech lead".</p>
+
+<p>Em operações de negócio, o PaperClip pode atuar como um time virtual completo, com agentes representando funções como atendimento a clientes, análise financeira, geração de relatórios e prospecção de leads — todos coordenados por um agente "CEO" que recebe a missão estratégica do dono da empresa.</p>
+
+<h2>Cuidados e boas práticas</h2>
+
+<p>O PaperClip é uma plataforma poderosa e que executa chamadas pagas a APIs de modelos de IA. O cliente é responsável pelos custos dessas chamadas — a NTWeb fornece a infraestrutura, mas não cobre o consumo das APIs externas. Por isso é fundamental configurar o <strong>budget mensal por agente</strong> dentro da própria interface do PaperClip, em <em>Settings → Budgets</em>. Esse limite impede que um agente continue chamando o modelo após estourar o orçamento.</p>
+
+<p>Para uso em produção pública, recomenda-se sempre colocar a aplicação atrás de um proxy HTTPS (Nginx ou Caddy) e configurar autenticação forte para o usuário administrador. O PaperClip não oferece TLS nativo. Backups periódicos do diretório <code>/root/.paperclipai/</code> garantem a recuperação completa do estado em caso de falha.</p>
+
+<h2>Perguntas frequentes</h2>
+
+<h3>Preciso ter conhecimento de programação para usar o PaperClip?</h3>
+
+<p>Não para o uso básico. A criação de agentes, a definição de missões e a operação cotidiana acontecem inteiramente pela interface web, sem código. Conhecimento técnico é útil apenas para integrações avançadas e personalização de habilidades dos agentes.</p>
+
+<h3>Quais provedores de modelo de IA o PaperClip suporta?</h3>
+
+<p>O PaperClip integra-se com os principais provedores comerciais (OpenAI, Anthropic, Google) e também com modelos locais via Ollama, o que permite combinar IA paga e IA gratuita conforme a sensibilidade dos dados de cada agente.</p>
+
+<h3>O que acontece se eu reiniciar a VPS?</h3>
+
+<p>O PaperClip é gerenciado pelo systemd. Após qualquer reinício, o serviço sobe sozinho e o estado anterior (agentes, conversas, tickets) é mantido pelo PostgreSQL embutido. Nenhum dado é perdido.</p>
+
+<h3>Posso migrar o PaperClip para outra VPS depois?</h3>
+
+<p>Sim. Basta copiar o conteúdo do diretório <code>/root/.paperclipai/</code> para a nova VPS, instalar o template equivalente e iniciar o serviço. Os dados são portáveis.</p>
+
+<h3>Onde encontro a documentação oficial?</h3>
+
+<p>A documentação completa está em <a href="https://paperclip.ing/" target="_blank" rel="noopener noreferrer">paperclip.ing</a> e o código-fonte está em <a href="https://github.com/paperclipai/paperclip" target="_blank" rel="noopener noreferrer">github.com/paperclipai/paperclip</a>.</p>

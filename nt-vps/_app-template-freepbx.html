@@ -1,0 +1,58 @@
+<h2>O que é o FreePBX</h2>
+
+<p>O FreePBX é a interface web mais usada no mundo para gerenciar centrais telefônicas baseadas no Asterisk, o motor open-source de telefonia mais popular existente. Combinados, FreePBX e Asterisk formam uma central PABX VoIP completa: ramais, troncos SIP, URA (atendimento eletrônico), filas de atendimento, gravação de chamadas, conferências, voicemail, relatórios e integração com CRM.</p>
+
+<p>O projeto é mantido pela Sangoma Technologies sob licença GPL. É usado por milhares de empresas e provedores de telecomunicações no mundo todo, como alternativa moderna e econômica a centrais telefônicas tradicionais.</p>
+
+<h2>O que vem pronto na VPS NT</h2>
+
+<p>O template <strong>FreePBX</strong> (VMID 5110) baixa o instalador oficial da Sangoma durante a customização da imagem e o executa no primeiro boot. O processo demora entre 10 e 15 minutos e configura automaticamente o Asterisk, o FreePBX, o banco MariaDB, o servidor web e todos os módulos essenciais.</p>
+
+<table>
+  <thead><tr><th>Item</th><th>Valor</th></tr></thead>
+  <tbody>
+    <tr><td>Sistema operacional</td><td>Debian 12</td></tr>
+    <tr><td>Stack</td><td>Asterisk + FreePBX + Apache + MariaDB</td></tr>
+    <tr><td>Porta web</td><td>80 (interface admin em /admin)</td></tr>
+    <tr><td>Porta SIP</td><td>5060 UDP/TCP</td></tr>
+    <tr><td>Portas RTP (mídia)</td><td>10000–20000 UDP</td></tr>
+    <tr><td>Porta SSH</td><td>2222</td></tr>
+    <tr><td>Recursos recomendados</td><td>2 vCPU / 4 GB de RAM</td></tr>
+  </tbody>
+</table>
+
+<h2>Como acessar pela primeira vez</h2>
+
+<p>Após a conclusão da instalação no primeiro boot, o cliente acessa <code>http://&lt;IP&gt;/admin</code> ou <code>http://&lt;DOMINIO&gt;/admin</code> caso tenha configurado um domínio. Na primeira visita, o FreePBX exibe a tela de criação do usuário administrativo. Após cadastrar o admin, o painel completo fica disponível.</p>
+
+<p>A partir do painel, o cliente cria ramais (extensions), configura o tronco SIP da operadora VoIP escolhida (NTFONE, por exemplo) e monta o plano de discagem. Templates de configuração estão disponíveis na documentação para os principais provedores brasileiros.</p>
+
+<h2>Casos de uso típicos</h2>
+
+<p>Pequenas e médias empresas usam o FreePBX como central telefônica completa, com ramais físicos (aparelhos IP), softphones (apps Zoiper, Linphone, MicroSIP em PCs e celulares) e atendimento por URA. Provedores VoIP usam para revender minutos a clientes finais. Call centers configuram filas de atendimento com distribuição automática de chamadas e gravação para auditoria.</p>
+
+<p>Para empresas com matriz e filiais, o FreePBX permite ligações ramal-a-ramal sem custo entre as unidades, mesmo geograficamente distantes — basta que cada filial conecte seus ramais ao FreePBX da matriz pela internet.</p>
+
+<h2>Cuidados e boas práticas</h2>
+
+<p>Centrais VoIP são alvos frequentes de ataques de fraude (tentativas de roubar minutos para chamadas internacionais). O FreePBX vem com firewall integrado e Fail2Ban — mantenha-os ativados. Use senhas fortes em todos os ramais, restrinja a porta 5060 a IPs conhecidos quando possível e bloqueie destinos internacionais que não sejam usados.</p>
+
+<p>O backup completo do FreePBX inclui o banco MariaDB, os arquivos de configuração do Asterisk, os áudios da URA e as gravações. O painel oferece módulo de backup nativo com agendamento e armazenamento remoto. Em uso de produção, recomenda-se também certificado HTTPS para o painel admin.</p>
+
+<h2>Perguntas frequentes</h2>
+
+<h3>Posso usar com a operadora NTFONE?</h3>
+
+<p>Sim. A NTWeb oferece a NTFONE como tronco SIP. Após contratar o tronco, basta configurar as credenciais SIP no FreePBX (módulo Connectivity → Trunks) e direcionar as rotas de saída para o tronco NTFONE.</p>
+
+<h3>Quantos ramais simultâneos a VPS aguenta?</h3>
+
+<p>Em uma VPS de 4 GB de RAM, é razoável trabalhar com 50 a 100 ramais e cerca de 30 chamadas simultâneas. Volumes maiores exigem mais CPU e RAM, e cuidado com a banda de internet (cada chamada usa entre 80 e 100 kbps).</p>
+
+<h3>Posso usar softphone em celular?</h3>
+
+<p>Sim. Aplicativos como Zoiper, Linphone, Bria e MicroSIP rodam em iOS e Android e conectam-se ao FreePBX como ramais comuns, transformando o celular em uma extensão da central.</p>
+
+<h3>Onde encontro documentação oficial?</h3>
+
+<p>Documentação em <a href="https://wiki.freepbx.org/" target="_blank" rel="noopener noreferrer">wiki.freepbx.org</a>. Comunidade brasileira ativa em fóruns como o VoIP-Info e grupos de Telegram.</p>

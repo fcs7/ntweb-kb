@@ -1,0 +1,57 @@
+<h2>O que é o Zabbix</h2>
+
+<p>O Zabbix é uma das plataformas open-source mais maduras e adotadas no mundo para monitoramento de infraestrutura de TI. Ele coleta métricas de servidores, redes, aplicações, bancos de dados, dispositivos SNMP e qualquer fonte de dados que possa ser consultada. Com base nessas métricas, o Zabbix gera dashboards, alertas em tempo real e relatórios de SLA.</p>
+
+<p>É usado por empresas de todos os portes — desde pequenas equipes monitorando dezenas de máquinas até operadoras de telecom monitorando centenas de milhares de elementos de rede. O projeto é mantido pela empresa Zabbix LLC e oferecido sob licença AGPL, com suporte comercial opcional.</p>
+
+<h2>O que vem pronto na VPS NT</h2>
+
+<p>O template <strong>Zabbix</strong> (VMID 5106) sobe o servidor Zabbix completo via Docker Compose: o frontend web, o servidor Zabbix, o banco MySQL e o agente local. A interface web responde na porta 80. A senha do MySQL e do usuário Admin do Zabbix são geradas automaticamente no primeiro boot e gravadas em <code>/root/credentials.txt</code>.</p>
+
+<table>
+  <thead><tr><th>Item</th><th>Valor</th></tr></thead>
+  <tbody>
+    <tr><td>Sistema operacional</td><td>Debian 12</td></tr>
+    <tr><td>Stack</td><td>Docker Compose — Zabbix Server + Frontend + MySQL</td></tr>
+    <tr><td>Porta da aplicação</td><td>80 (HTTP)</td></tr>
+    <tr><td>Porta SSH</td><td>2222</td></tr>
+    <tr><td>Recursos recomendados</td><td>2 vCPU / 4 GB de RAM</td></tr>
+    <tr><td>Domínio</td><td>detectado automaticamente via cloud-init</td></tr>
+  </tbody>
+</table>
+
+<h2>Como acessar pela primeira vez</h2>
+
+<p>Acesse <code>http://&lt;IP&gt;/</code> ou <code>http://&lt;DOMINIO&gt;/</code> caso tenha configurado um. A tela de login pede usuário e senha. O usuário é <code>Admin</code> (com A maiúsculo) e a senha está em <code>/root/credentials.txt</code>. Caso a senha não tenha sido trocada automaticamente, o sistema usa a senha padrão <code>zabbix</code>, que <strong>deve ser trocada no primeiro acesso</strong>.</p>
+
+<p>Após o login, o painel inicial mostra o status do próprio servidor Zabbix. A partir daí, o cliente cadastra hosts a serem monitorados, instala agentes Zabbix nas máquinas-alvo e configura templates (conjuntos prontos de itens, gatilhos e gráficos) para Linux, Windows, MySQL, Nginx e dezenas de outras plataformas.</p>
+
+<h2>Casos de uso típicos</h2>
+
+<p>O Zabbix é usado para monitorar disponibilidade de servidores web, latência de APIs, espaço em disco em servidores de arquivos, temperatura de switches gerenciáveis via SNMP, métricas de bancos de dados (queries lentas, conexões abertas, replicação), e até processos de negócio (número de pedidos novos por minuto, transações financeiras pendentes).</p>
+
+<p>Provedores de internet usam Zabbix para monitorar OLTs, switches e roteadores. Empresas SaaS o utilizam para alertar a equipe de plantão quando uma API começa a apresentar latência anormal, antes que clientes reclamem.</p>
+
+<h2>Cuidados e boas práticas</h2>
+
+<p>O banco de dados do Zabbix cresce rapidamente em ambientes com muitos hosts e itens. Configure políticas de housekeeping (retenção) adequadas para evitar enchimento de disco. Para grandes volumes, considere usar TimescaleDB ou Elastic em vez do MySQL padrão.</p>
+
+<p>Alertas só são úteis se chegam a quem precisa agir. Configure mídias (e-mail, Telegram, Slack, webhook) e ações (escalonamento, horários de plantão) logo no início. Templates da comunidade em <a href="https://www.zabbix.com/integrations" target="_blank" rel="noopener noreferrer">zabbix.com/integrations</a> aceleram bastante a configuração inicial.</p>
+
+<h2>Perguntas frequentes</h2>
+
+<h3>Quantos hosts posso monitorar nesta VPS?</h3>
+
+<p>Em uma VPS de 4 GB de RAM, com configuração padrão, é razoável monitorar entre 100 e 300 hosts com checagens a cada minuto. Para volumes maiores, considere aumentar RAM, otimizar o MySQL e usar partitioning das tabelas históricas.</p>
+
+<h3>Como instalo o agente Zabbix em uma máquina remota?</h3>
+
+<p>Use os pacotes oficiais do <a href="https://www.zabbix.com/download" target="_blank" rel="noopener noreferrer">zabbix.com/download</a>. Em Debian/Ubuntu, basta <code>apt install zabbix-agent</code> e configurar o IP do servidor no arquivo <code>/etc/zabbix/zabbix_agentd.conf</code>.</p>
+
+<h3>Tem app móvel?</h3>
+
+<p>Sim, o Zabbix oferece app oficial para iOS e Android, além de aplicativos da comunidade. Os apps consultam a API do servidor e exibem alertas e dashboards no celular.</p>
+
+<h3>Onde encontro documentação oficial?</h3>
+
+<p>Documentação completa em <a href="https://www.zabbix.com/documentation/current/pt" target="_blank" rel="noopener noreferrer">zabbix.com/documentation</a> (português disponível).</p>

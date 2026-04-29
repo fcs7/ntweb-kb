@@ -1,0 +1,58 @@
+<h2>O que é o stack LEMP</h2>
+
+<p>LEMP é a versão moderna do stack LAMP, em que o Apache é substituído pelo Nginx (pronunciado "Engine-X" — daí o "E" da sigla). É a combinação preferida para sites de alto tráfego, APIs em produção e qualquer aplicação que precise extrair o máximo de performance da VPS, especialmente em hardware modesto.</p>
+
+<p>O Nginx consome significativamente menos memória que o Apache em cenários de muitas conexões simultâneas, processa arquivos estáticos com altíssima eficiência e atua nativamente como reverse proxy — útil quando se misturam aplicações PHP com APIs Node.js ou Python na mesma máquina.</p>
+
+<h2>O que vem pronto na VPS NT</h2>
+
+<p>O template <strong>LEMP</strong> (VMID 5105) entrega Nginx, MariaDB e PHP-FPM já instalados e configurados. O vhost padrão do Nginx já está preparado para servir PHP via FastCGI Process Manager, e a senha de root do MariaDB é gerada no primeiro boot.</p>
+
+<table>
+  <thead><tr><th>Item</th><th>Valor</th></tr></thead>
+  <tbody>
+    <tr><td>Sistema operacional</td><td>Debian 12</td></tr>
+    <tr><td>Web server</td><td>Nginx 1.22</td></tr>
+    <tr><td>Banco de dados</td><td>MariaDB 10.11</td></tr>
+    <tr><td>Linguagem</td><td>PHP 8.2-FPM</td></tr>
+    <tr><td>Porta da aplicação</td><td>80 (HTTP)</td></tr>
+    <tr><td>Porta SSH</td><td>2222</td></tr>
+    <tr><td>Recursos recomendados</td><td>2 vCPU / 2 GB de RAM</td></tr>
+  </tbody>
+</table>
+
+<h2>Como acessar pela primeira vez</h2>
+
+<p>Após o provisionamento, basta acessar <code>http://&lt;IP&gt;/</code> para ver a página padrão. A senha de root do MariaDB e a versão exata do PHP-FPM em uso ficam em <code>/root/credentials.txt</code>.</p>
+
+<p>Os arquivos do site vão em <code>/var/www/html/</code>, mesmo padrão do LAMP. Para múltiplos sites, o cliente cria novos blocos <code>server</code> em <code>/etc/nginx/sites-available/</code> e os habilita com links em <code>sites-enabled/</code>.</p>
+
+<h2>Casos de uso típicos</h2>
+
+<p>LEMP é a escolha recomendada para sites WordPress de alto tráfego, lojas Magento e PrestaShop com muitos visitantes simultâneos, APIs em Laravel e Symfony, painéis administrativos em frameworks como Yii e CodeIgniter, e qualquer aplicação PHP que precise responder rapidamente a centenas de requisições por segundo.</p>
+
+<p>Também é comum usar Nginx como reverse proxy na frente de aplicações Node.js, Python ou Ruby — o Nginx serve estáticos, faz cache, gerencia HTTPS e encaminha apenas as requisições dinâmicas para a aplicação interna.</p>
+
+<h2>Cuidados e boas práticas</h2>
+
+<p>O Nginx não suporta arquivos <code>.htaccess</code>. Aplicações que dependem de regras .htaccess (como muitos plugins WordPress) precisam ter as regras traduzidas para a sintaxe do Nginx. A maioria das plataformas grandes (WordPress, Magento, NextCloud) já fornece exemplos prontos de configuração Nginx em sua documentação.</p>
+
+<p>Para HTTPS, o Certbot integra-se nativamente com Nginx via <code>certbot --nginx -d seudominio.com.br</code>. A renovação é automática. Sites de produção devem habilitar HSTS, gzip/brotli e cache de estáticos para tirar máximo proveito da arquitetura LEMP.</p>
+
+<h2>Perguntas frequentes</h2>
+
+<h3>Quando escolher LEMP em vez de LAMP?</h3>
+
+<p>Quando há expectativa de alto volume de tráfego, quando a VPS tem pouca RAM e precisa servir muitas conexões, ou quando a aplicação precisa de cache agressivo de estáticos. Para sites pequenos e plataformas que dependem de .htaccess, LAMP costuma ser mais simples.</p>
+
+<h3>Posso rodar WordPress no LEMP?</h3>
+
+<p>Sim, e é uma escolha popular para sites WordPress sérios. A documentação oficial do WordPress fornece a configuração Nginx pronta. Plugins de cache como WP Rocket ou W3 Total Cache integram-se bem com Nginx.</p>
+
+<h3>Como configuro mais de um site?</h3>
+
+<p>Crie um arquivo em <code>/etc/nginx/sites-available/seusite.conf</code> com um bloco <code>server</code> dedicado, faça um link simbólico em <code>sites-enabled/</code> e recarregue com <code>systemctl reload nginx</code>.</p>
+
+<h3>Onde encontro documentação oficial?</h3>
+
+<p>Nginx: <a href="https://nginx.org/en/docs/" target="_blank" rel="noopener noreferrer">nginx.org/en/docs</a>. PHP-FPM: <a href="https://www.php.net/manual/pt_BR/install.fpm.php" target="_blank" rel="noopener noreferrer">php.net/manual/install.fpm</a>.</p>

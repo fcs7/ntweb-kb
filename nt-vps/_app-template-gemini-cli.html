@@ -1,0 +1,61 @@
+<h2>O que é o Gemini CLI</h2>
+
+<p>O Gemini CLI é a ferramenta oficial do Google para usar o modelo Gemini diretamente no terminal. É o equivalente Google ao Claude Code da Anthropic: um agente conversacional que lê arquivos, executa comandos, edita código e ajuda em tarefas administrativas, com confirmação humana a cada passo destrutivo.</p>
+
+<p>O grande diferencial do Gemini CLI é o tier gratuito generoso. Com login Google pessoal, o cliente recebe uma cota mensal substancial para uso individual sem custo, o que torna a ferramenta atraente para desenvolvedores, estudantes e pequenas equipes que não querem investir em chaves de API logo de início.</p>
+
+<h2>O que vem pronto na VPS NT</h2>
+
+<p>O template <strong>Gemini CLI</strong> (VMID 5109) entrega Node.js 20 LTS, Git, ferramentas de build e o pacote <code>@google/gemini-cli</code> instalado globalmente via npm. Após o provisionamento, basta conectar por SSH e executar <code>gemini</code>.</p>
+
+<table>
+  <thead><tr><th>Item</th><th>Valor</th></tr></thead>
+  <tbody>
+    <tr><td>Sistema operacional</td><td>Debian 12</td></tr>
+    <tr><td>Stack</td><td>Node.js 20 + git + build-essential</td></tr>
+    <tr><td>Pacote principal</td><td>@google/gemini-cli (npm global)</td></tr>
+    <tr><td>Porta SSH</td><td>2222</td></tr>
+    <tr><td>Recursos recomendados</td><td>2 vCPU / 2 GB de RAM</td></tr>
+    <tr><td>Autenticação</td><td>login Google ou GEMINI_API_KEY</td></tr>
+  </tbody>
+</table>
+
+<h2>Como acessar pela primeira vez</h2>
+
+<p>Conecte via SSH na porta 2222 e digite <code>gemini</code>. Na primeira execução, a ferramenta abre uma URL para autenticação via conta Google. O cliente abre essa URL em qualquer navegador, faz login com a conta desejada e cola o código de autorização de volta no terminal.</p>
+
+<p>Para uso programático ou em scripts, é possível usar uma chave de API obtida em <a href="https://aistudio.google.com/" target="_blank" rel="noopener noreferrer">aistudio.google.com</a>:</p>
+
+<pre><code>export GEMINI_API_KEY="sua-chave-aqui"</code></pre>
+
+<p>Adicionar essa linha ao <code>~/.bashrc</code> persiste a configuração entre sessões.</p>
+
+<h2>Casos de uso típicos</h2>
+
+<p>Desenvolvedores usam o Gemini CLI para tarefas similares ao Claude Code: implementar features, debugar código, gerar testes, refatorar projetos. Como o tier gratuito é generoso, é especialmente popular para projetos pessoais, estudos, experimentos e prototipagem rápida.</p>
+
+<p>O modelo Gemini também é forte em multimodalidade: análise de imagens, processamento de documentos PDF e tarefas que envolvem múltiplos formatos. Para times que já operam no ecossistema Google Workspace, a integração com o login da empresa torna a adoção mais simples.</p>
+
+<h2>Cuidados e boas práticas</h2>
+
+<p>Como o Claude Code, o Gemini CLI é um agente com capacidade de executar comandos e modificar arquivos. Cada ação destrutiva pede confirmação, mas o usuário deve revisar com cuidado. O conteúdo dos arquivos lidos é enviado aos servidores do Google para processamento — verifique a política de privacidade do Gemini antes de usar com dados sensíveis.</p>
+
+<p>Para evitar consumo inesperado da cota, o cliente pode definir limites no Google AI Studio. Em uso corporativo, o Gemini também está disponível via Vertex AI no Google Cloud, com governança e auditoria mais robustas.</p>
+
+<h2>Perguntas frequentes</h2>
+
+<h3>O Gemini CLI é realmente gratuito?</h3>
+
+<p>O tier gratuito é generoso para uso individual: a cota mensal cobre dezenas a centenas de interações conforme o modelo escolhido. Para uso intenso, há planos pagos via Google AI Studio ou Vertex AI.</p>
+
+<h3>Qual a diferença entre Gemini CLI e Claude Code?</h3>
+
+<p>São ferramentas equivalentes em conceito, cada uma usando o modelo da empresa que a desenvolve. A escolha depende da preferência por modelo (Gemini do Google vs Claude da Anthropic), do tier gratuito (Gemini é mais generoso para começar) e da integração desejada (Gemini com Workspace, Claude com Anthropic Console).</p>
+
+<h3>Posso ter os dois templates ao mesmo tempo?</h3>
+
+<p>Sim. Como cada template é uma VPS independente, o cliente pode contratar uma VPS Claude Code e outra Gemini CLI em paralelo, ou usar uma única máquina e instalar manualmente o segundo CLI no template do primeiro.</p>
+
+<h3>Onde encontro documentação oficial?</h3>
+
+<p>Documentação em <a href="https://github.com/google-gemini/gemini-cli" target="_blank" rel="noopener noreferrer">github.com/google-gemini/gemini-cli</a> e em <a href="https://ai.google.dev/" target="_blank" rel="noopener noreferrer">ai.google.dev</a>.</p>

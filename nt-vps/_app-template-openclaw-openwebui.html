@@ -1,0 +1,55 @@
+<h2>O que é o combo OpenClaw + OpenWebUI</h2>
+
+<p>Este template combina três ferramentas de inteligência artificial em uma única VPS: o <strong>OpenClaw</strong> (assistente de IA via terminal, similar em conceito ao Claude Code), o <strong>Ollama</strong> (servidor de modelos LLM locais) e o <strong>OpenWebUI</strong> (interface web tipo ChatGPT). O resultado é um ambiente completo onde o cliente usa IA tanto via SSH (no terminal) quanto via navegador, com modelos locais ou APIs comerciais.</p>
+
+<p>É a configuração ideal para profissionais que querem ter à disposição múltiplas formas de interagir com IA sem precisar provisionar várias VPSs.</p>
+
+<h2>O que vem pronto na VPS NT</h2>
+
+<p>O template <strong>OpenClaw + OpenWebUI</strong> (VMID 5107) instala o Ollama nativo (não em contêiner, para ter acesso direto ao hardware) e sobe o OpenWebUI via Docker Compose. O OpenClaw é instalado como pacote npm global e fica disponível como comando no terminal.</p>
+
+<table>
+  <thead><tr><th>Item</th><th>Valor</th></tr></thead>
+  <tbody>
+    <tr><td>Sistema operacional</td><td>Debian 12</td></tr>
+    <tr><td>Stack</td><td>Docker (OpenWebUI) + Ollama nativo + OpenClaw via npm</td></tr>
+    <tr><td>Porta do OpenWebUI</td><td>3000</td></tr>
+    <tr><td>Porta SSH</td><td>2222</td></tr>
+    <tr><td>Recursos mínimos</td><td>4 vCPU / 8 GB de RAM</td></tr>
+    <tr><td>Recursos recomendados</td><td>VPS com GPU para modelos &gt;7B</td></tr>
+  </tbody>
+</table>
+
+<h2>Como acessar pela primeira vez</h2>
+
+<p>O acesso à interface web acontece em <code>http://&lt;IP&gt;:3000</code>. O primeiro usuário cadastrado torna-se administrador da instância. A partir do painel, é possível ir em <em>Settings → Models</em> e baixar modelos via interface. Modelos também podem ser baixados pelo terminal SSH com <code>ollama pull llama3</code>.</p>
+
+<p>Para usar o OpenClaw via terminal, o cliente conecta por SSH na porta 2222 e executa <code>openclaw onboard</code> uma única vez. O wizard pede a chave de API do provedor desejado (Anthropic, OpenAI ou outros) e configura integrações com ferramentas locais. Depois, basta digitar <code>openclaw</code> em qualquer momento para iniciar uma sessão.</p>
+
+<h2>Casos de uso típicos</h2>
+
+<p>O combo é ideal para times que mantêm múltiplos modelos e precisam de ambientes de IA flexíveis. Casos comuns: revisão de código sensível com modelos locais (sem expor o código a APIs externas), geração de relatórios e análises com Claude/GPT via OpenWebUI, automação de tarefas administrativas com OpenClaw no terminal (gerenciamento de servidores, geração de scripts ad-hoc), e treinamento interno de colaboradores em uso de IA — todos os modelos disponíveis em um único endereço.</p>
+
+<h2>Cuidados e boas práticas</h2>
+
+<p>O Ollama nativo escuta em <code>0.0.0.0:11434</code> por padrão neste template, para que o OpenWebUI possa se conectar. Em redes públicas, recomenda-se restringir essa porta no firewall para apenas o loopback ou para hosts específicos. O OpenWebUI deve ficar atrás de HTTPS (Nginx ou Caddy) em qualquer cenário público.</p>
+
+<p>Modelos LLM locais ocupam espaço considerável em disco — entre 4 e 40 GB cada, dependendo do tamanho. Antes de baixar vários modelos, verifique o disco da VPS. As chaves de API armazenadas pelo OpenClaw ficam em <code>~/.openclaw/</code> e devem ser tratadas como senhas: nunca compartilhe esse diretório em backups públicos.</p>
+
+<h2>Perguntas frequentes</h2>
+
+<h3>Posso usar apenas a interface web e ignorar o OpenClaw?</h3>
+
+<p>Sim. As três ferramentas são independentes. O cliente pode usar apenas o OpenWebUI, apenas o OpenClaw, ou os dois conforme a conveniência.</p>
+
+<h3>Como conecto a interface web a um modelo da OpenAI?</h3>
+
+<p>Em <em>Settings → Connections</em> do OpenWebUI, adicione uma nova conexão tipo OpenAI e cole sua chave de API. O modelo aparece automaticamente na lista de seletores de modelo do chat.</p>
+
+<h3>O OpenClaw funciona offline?</h3>
+
+<p>Apenas se configurado para usar modelos locais via Ollama. Para modelos em nuvem (Claude, GPT), é necessário acesso à internet.</p>
+
+<h3>Onde encontro documentação?</h3>
+
+<p>OpenClaw: <a href="https://github.com/openclaw" target="_blank" rel="noopener noreferrer">github.com/openclaw</a>. Ollama: <a href="https://ollama.com/library" target="_blank" rel="noopener noreferrer">ollama.com</a>. OpenWebUI: <a href="https://docs.openwebui.com/" target="_blank" rel="noopener noreferrer">docs.openwebui.com</a>.</p>

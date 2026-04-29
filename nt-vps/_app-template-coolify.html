@@ -1,0 +1,56 @@
+<h2>O que é o Coolify</h2>
+
+<p>O Coolify é uma plataforma open-source self-hosted que substitui serviços comerciais como Heroku, Vercel, Netlify e Render. Ele permite fazer deploy de aplicações, bancos de dados e serviços com poucos cliques, gerenciando containers Docker, certificados HTTPS automáticos via Let's Encrypt e integração contínua a partir de repositórios Git.</p>
+
+<p>O Coolify é mantido pela comunidade <a href="https://coolify.io/" target="_blank" rel="noopener noreferrer">coolify.io</a> sob licença Apache 2.0 e tem ganhado destaque entre equipes que querem reduzir custos com PaaS comerciais sem abrir mão da praticidade do "git push e está no ar".</p>
+
+<h2>O que vem pronto na VPS NT</h2>
+
+<p>O template <strong>Coolify</strong> (VMID 5103) executa o instalador oficial do Coolify durante o primeiro boot. O instalador prepara o Docker, baixa todos os componentes do Coolify e os coloca em execução. A interface web responde na porta 8000.</p>
+
+<table>
+  <thead><tr><th>Item</th><th>Valor</th></tr></thead>
+  <tbody>
+    <tr><td>Sistema operacional</td><td>Debian 12</td></tr>
+    <tr><td>Stack</td><td>Docker + Coolify (instalador oficial)</td></tr>
+    <tr><td>Porta da aplicação</td><td>8000</td></tr>
+    <tr><td>Porta SSH</td><td>2222</td></tr>
+    <tr><td>Recursos recomendados</td><td>2 vCPU / 4 GB de RAM</td></tr>
+  </tbody>
+</table>
+
+<h2>Como acessar pela primeira vez</h2>
+
+<p>O primeiro boot leva entre três e oito minutos, pois o instalador baixa todos os contêineres do Coolify. O cliente pode acompanhar o progresso por SSH com <code>journalctl -u app-boot -f</code>. Quando estiver pronto, basta acessar <code>http://&lt;IP&gt;:8000</code> — a primeira visita exibe o setup wizard.</p>
+
+<p>No wizard, o cliente cadastra o usuário ROOT (e-mail e senha forte), define o domínio da instância (opcional, mas recomendado) e o e-mail de notificações. Após o setup, o painel completo está disponível e o cliente pode começar a fazer deploy de aplicações.</p>
+
+<h2>Casos de uso típicos</h2>
+
+<p>O Coolify é ideal para empresas que querem rodar várias aplicações na mesma infraestrutura sem complexidade de orquestração manual. Casos comuns incluem hospedar múltiplos sites WordPress isolados, fazer deploy de aplicações Node.js ou Python diretamente do GitHub, executar bancos PostgreSQL e Redis para vários projetos, e disponibilizar serviços auxiliares como n8n, NocoDB e Plausible Analytics em um único painel.</p>
+
+<p>Equipes de desenvolvimento usam o Coolify para ter ambientes de staging completos com pipelines de deploy automático: cada push para o branch <code>staging</code> dispara um build e atualiza o ambiente correspondente.</p>
+
+<h2>Cuidados e boas práticas</h2>
+
+<p>O Coolify atualiza-se sozinho por padrão, e isso pode reiniciar contêineres em horários inesperados. Para cargas críticas, o cliente deve desabilitar o auto-update em <em>Settings</em> e fazer atualizações manualmente em janelas planejadas.</p>
+
+<p>Para usar HTTPS com domínio próprio, basta configurar o domínio em <em>Settings → Instance Domain</em> — o Coolify gerencia o certificado Let's Encrypt automaticamente. As portas 6001 (soketi) e 6002 (terminal web) podem precisar ser liberadas no firewall caso o cliente queira usar atualizações em tempo real e o terminal interno do painel.</p>
+
+<h2>Perguntas frequentes</h2>
+
+<h3>Posso hospedar quantos sites no Coolify?</h3>
+
+<p>Não há limite imposto pelo Coolify. O limite real é a capacidade da VPS (CPU, RAM e disco). Em uma VPS de 4 GB, é razoável hospedar entre cinco e dez aplicações pequenas.</p>
+
+<h3>O Coolify suporta deploy a partir do GitHub privado?</h3>
+
+<p>Sim. O Coolify integra-se com GitHub, GitLab e Bitbucket via tokens ou GitHub App, suportando repositórios privados sem complicação.</p>
+
+<h3>Como faço backup das aplicações?</h3>
+
+<p>O Coolify oferece backup automático para bancos de dados (PostgreSQL, MySQL) com agendamento e armazenamento em S3. Para aplicações stateless, o backup é o próprio Git. Volumes persistentes podem ser copiados manualmente ou via scripts agendados.</p>
+
+<h3>Onde encontro a documentação oficial?</h3>
+
+<p>Documentação em <a href="https://coolify.io/docs/" target="_blank" rel="noopener noreferrer">coolify.io/docs</a>.</p>
