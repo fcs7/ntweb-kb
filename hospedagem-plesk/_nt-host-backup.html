@@ -1,0 +1,108 @@
+<div style="background: #f0f9ff; border-left: 4px solid #0369a1; padding: 16px 20px; margin: 0 0 24px; border-radius: 4px;">
+<p style="margin: 0 0 8px; font-size: 15px; color: #0c4a6e;"><strong>Resumo:</strong> você mesmo pode criar, agendar, restaurar e baixar backups do seu site pelo <strong>Gerenciador de backup</strong> do Plesk. Faça um backup antes de qualquer mudança importante e guarde uma cópia <strong>fora</strong> da hospedagem.</p>
+<p style="margin: 0;"><a style="display: inline-block; background: #0369a1; color: #fff; padding: 8px 16px; border-radius: 4px; text-decoration: none; font-weight: 600;" href="https://novo.ntweb.net.br" target="_blank" rel="noopener noreferrer">Abrir a Área do Cliente</a></p>
+</div>
+
+<div style="background: #fffbeb; border-left: 4px solid #d97706; padding: 12px 16px; margin: 16px 0; border-radius: 4px;">
+<p style="margin: 0; color: #78350f;"><strong>Troque <code>seudominio.com.br</code> pelo domínio do seu site.</strong> Os nomes deste artigo usam <code>seudominio.com.br</code> como exemplo. Se o seu site é <code>lojadamaria.com.br</code>, é ele que você escolhe nas telas do Gerenciador de backup.</p>
+</div>
+
+<a id="importante" name="importante"></a>
+<h2>Antes de tudo: mantenha uma cópia fora da hospedagem</h2>
+<div style="background: #fef2f2; border-left: 4px solid #dc2626; padding: 12px 16px; margin: 12px 0; border-radius: 4px;">
+<p style="margin: 0; color: #7f1d1d;"><strong>Um backup guardado só na própria hospedagem não protege tudo.</strong> Se a conta tiver um problema grave ou se você apagar o serviço, o backup vai junto. Baixe os backups importantes para o seu computador ou envie para outro lugar (nuvem, HD externo).</p>
+</div>
+
+<a id="acesso" name="acesso"></a>
+<h2>Abrir o Gerenciador de backup</h2>
+<ol>
+<li>Acesse <a href="https://novo.ntweb.net.br" target="_blank" rel="noopener noreferrer">novo.ntweb.net.br</a> e vá em <strong>Meus Serviços</strong>.</li>
+<li>Abra o seu plano de hospedagem.</li>
+<li>No grupo <strong>One Click Login</strong>, clique em <strong>Plesk</strong>. A ferramenta abre já logada.</li>
+<li>Em <strong>Websites e Domínios</strong>, clique em <strong>Backup &amp; Restauração</strong> (na barra lateral direita, ou na seção <strong>Arquivos &amp; Bases de Dados</strong> do <strong>Painel</strong> do domínio). Abre o <strong>Gerenciador de backup</strong>.</li>
+</ol>
+<p>Nele ficam os botões <strong>Fazer backup</strong>, <strong>Upload</strong>, <strong>Remover</strong>, <strong>Cronograma</strong> e <strong>Configurações de Armazenamento Remoto</strong>. A lista mostra os backups existentes; se aparecer <strong>Nenhum item</strong>, ainda não há nenhum backup.</p>
+
+<a id="criar" name="criar"></a>
+<h2>Criar um backup agora</h2>
+<ol>
+<li>No Gerenciador de backup, clique em <strong>Fazer backup</strong>.</li>
+<li>Escolha o que incluir: o site completo (arquivos, bancos de dados e e-mail) ou apenas parte dele.</li>
+<li>Escolha onde guardar: no servidor ou em um armazenamento remoto por FTP (veja abaixo).</li>
+<li>Confirme e aguarde. Sites grandes demoram mais; a tela mostra quando o backup termina.</li>
+</ol>
+
+<a id="agendar" name="agendar"></a>
+<h2>Agendar backups automáticos</h2>
+<p>Em vez de lembrar de fazer, deixe o Plesk fazer sozinho.</p>
+<ol>
+<li>No Gerenciador de backup, clique em <strong>Cronograma</strong>.</li>
+<li>Ative o backup agendado e escolha a frequência (por exemplo, todo dia ou toda semana). É aqui também que você controla por quanto tempo os backups agendados são mantidos.</li>
+<li>Escolha onde guardar e salve.</li>
+</ol>
+<div style="background: #fffbeb; border-left: 4px solid #d97706; padding: 12px 16px; margin: 16px 0; border-radius: 4px;">
+<p style="margin: 0; color: #78350f;"><strong>Verifique de vez em quando.</strong> Abra a lista de backups e confirme que os mais recentes existem. Um agendamento que falha em silêncio não protege nada.</p>
+</div>
+
+<a id="onde" name="onde"></a>
+<h2>Onde guardar: servidor ou FTP</h2>
+<div style="display: flex; flex-wrap: wrap; gap: 16px; margin: 16px 0 24px;">
+<div style="flex: 1; min-width: 260px; background: #eff6ff; border-left: 4px solid #2563eb; padding: 16px 20px; border-radius: 4px;">
+<p style="margin: 0 0 8px; font-size: 13px; text-transform: uppercase; letter-spacing: .5px; color: #1e40af; font-weight: bold;">No servidor</p>
+<p style="margin: 0; color: #1e3a8a;"><span style="font-size: 10pt;">Prático e rápido de restaurar. Ocupa o espaço de disco do seu plano, e a cópia está no mesmo lugar do site.</span></p>
+</div>
+<div style="flex: 1; min-width: 260px; background: #faf5ff; border-left: 4px solid #9333ea; padding: 16px 20px; border-radius: 4px;">
+<p style="margin: 0 0 8px; font-size: 13px; text-transform: uppercase; letter-spacing: .5px; color: #6b21a8; font-weight: bold;">Em um servidor FTP</p>
+<p style="margin: 0; color: #581c87;"><span style="font-size: 10pt;">A cópia vai para outro lugar, o que é mais seguro. Você configura o destino em <strong>Configurações de Armazenamento Remoto</strong>, informando o endereço, o usuário e a senha do FTP.</span></p>
+</div>
+</div>
+<p>Para a segurança do seu negócio, o ideal é combinar os dois: backup no servidor para restaurar rápido, e cópia externa (FTP ou download) para o caso de algo grave.</p>
+
+<a id="baixar" name="baixar"></a>
+<h2>Baixar um backup para o seu computador</h2>
+<ol>
+<li>No Gerenciador de backup, abra a lista de backups.</li>
+<li>Clique no backup desejado e use a opção de <strong>baixar</strong> (download).</li>
+<li>Guarde o arquivo em um local seguro, como um HD externo ou uma pasta na nuvem.</li>
+</ol>
+
+<a id="restaurar" name="restaurar"></a>
+<h2>Restaurar um backup</h2>
+<ol>
+<li>No Gerenciador de backup, abra a lista de backups.</li>
+<li>Clique no backup que você quer voltar.</li>
+<li>Escolha o que restaurar (tudo ou só partes) e confirme.</li>
+</ol>
+<div style="background: #fef2f2; border-left: 4px solid #dc2626; padding: 12px 16px; margin: 12px 0; border-radius: 4px;">
+<p style="margin: 0; color: #7f1d1d;"><strong>Restaurar substitui o que existe hoje.</strong> Arquivos, banco de dados e e-mails criados depois do backup podem ser perdidos. Se tiver dúvida, faça um backup novo antes de restaurar um antigo.</p>
+</div>
+
+<a id="aplicativos" name="aplicativos"></a>
+<h2>Backups de aplicativos (como o WordPress)</h2>
+<p>Além do backup completo da conta, os aplicativos instalados têm uma aba própria de backups.</p>
+<ol>
+<li>Na página do serviço, no menu <strong>Manage Account</strong>, clique em <strong>Applications</strong>.</li>
+<li>Abra a aba <strong>Backups</strong>.</li>
+</ol>
+<p>Use essa aba para consultar as cópias do aplicativo antes de atualizar um tema ou plugin. Ela não substitui o backup completo do Gerenciador de backup.</p>
+
+<a id="faq" name="faq"></a>
+<h2>Perguntas frequentes</h2>
+<a id="faq-quando" name="faq-quando"></a>
+<h3>Quando devo fazer um backup?</h3>
+<p>Antes de atualizar o WordPress, um tema ou um plugin, antes de trocar a versão do PHP, antes de mexer no banco de dados e antes de qualquer mudança grande no site. E, além disso, com agendamento regular.</p>
+<a id="faq-quanto-tempo" name="faq-quanto-tempo"></a>
+<h3>Por quanto tempo os backups ficam guardados?</h3>
+<p>Você controla isso em <strong>Cronograma</strong>. Os backups guardados no servidor usam o espaço de disco do seu plano; por isso, baixe os mais importantes e guarde fora da hospedagem.</p>
+
+<div style="background: #f0f9ff; border-left: 4px solid #0369a1; padding: 16px 20px; margin: 24px 0 0; border-radius: 4px;">
+<p style="margin: 0 0 8px; font-size: 15px; color: #0c4a6e;"><strong>Precisa de ajuda para restaurar?</strong> Abra um ticket com o domínio e a data aproximada do backup desejado.</p>
+<p style="margin: 0;"><a style="display: inline-block; background: #0369a1; color: #fff; padding: 8px 16px; border-radius: 4px; text-decoration: none; font-weight: 600;" href="https://novo.ntweb.net.br/submitticket.php" target="_blank" rel="noopener noreferrer">Abrir ticket de suporte</a></p>
+</div>
+
+<!-- WHMCS Metadata -->
+<!--
+Título: Backup e restauração
+Categoria: NT Host
+Tags: nt-host, plesk, backup
+-->

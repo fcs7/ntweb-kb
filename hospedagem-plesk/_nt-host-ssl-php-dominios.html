@@ -1,0 +1,137 @@
+<div style="background: #f0f9ff; border-left: 4px solid #0369a1; padding: 16px 20px; margin: 0 0 24px; border-radius: 4px;">
+<p style="margin: 0 0 8px; font-size: 15px; color: #0c4a6e;"><strong>Resumo:</strong> o certificado SSL (o cadeado do site) é <strong>gratuito</strong> e renova sozinho. Neste artigo você também escolhe a versão do <strong>PHP</strong> de cada site e cria <strong>subdomínios</strong>, <strong>domínios adicionais</strong> e <strong>aliases</strong>.</p>
+<p style="margin: 0;"><a style="display: inline-block; background: #0369a1; color: #fff; padding: 8px 16px; border-radius: 4px; text-decoration: none; font-weight: 600;" href="#ssl">Ir para o SSL</a></p>
+</div>
+
+<div style="background: #fffbeb; border-left: 4px solid #d97706; padding: 12px 16px; margin: 16px 0; border-radius: 4px;">
+<p style="margin: 0; color: #78350f;"><strong>Troque <code>seudominio.com.br</code> pelo domínio do seu site.</strong> Os endereços deste artigo usam <code>seudominio.com.br</code> como exemplo. Se o seu site é <code>lojadamaria.com.br</code>, o certificado vale para <code>lojadamaria.com.br</code>, <code>www.lojadamaria.com.br</code> e <code>webmail.lojadamaria.com.br</code>.</p>
+</div>
+
+<a id="ssl" name="ssl"></a>
+<h2>Certificado SSL gratuito (Let's Encrypt)</h2>
+<p>O SSL coloca o cadeado e o <code>https://</code> no endereço do seu site. Navegadores marcam como &quot;não seguro&quot; os sites sem ele. A NT Host oferece o certificado <strong>Let's Encrypt</strong> sem custo, com <strong>renovação automática</strong>.</p>
+<div style="background: #fffbeb; border-left: 4px solid #d97706; padding: 12px 16px; margin: 16px 0; border-radius: 4px;">
+<p style="margin: 0; color: #78350f;"><strong>Antes de começar:</strong> o domínio precisa já estar apontando para a hospedagem. Sem isso, o Let's Encrypt não consegue confirmar que o domínio é seu e a emissão falha.</p>
+</div>
+
+<a id="ssl-itit" name="ssl-itit"></a>
+<h3 style="color: #1e40af;">Instalar pelo Plesk (SSL It!)</h3>
+<ol>
+<li>Acesse <a href="https://novo.ntweb.net.br" target="_blank" rel="noopener noreferrer">novo.ntweb.net.br</a> &gt; <strong>Meus Serviços</strong> e abra o plano de hospedagem.</li>
+<li>No grupo <strong>One Click Login</strong>, clique em <strong>Plesk</strong>.</li>
+<li>Em <strong>Websites e Domínios</strong>, abra o seu domínio. Na aba <strong>Painel</strong>, na seção <strong>Segurança</strong>, clique em <strong>Certificados SSL/TLS</strong>.</li>
+</ol>
+<div style="background: #fef2f2; border-left: 4px solid #dc2626; padding: 12px 16px; margin: 12px 0; border-radius: 4px;">
+<p style="margin: 0; color: #7f1d1d;"><strong>Não clique em &quot;Comprar&quot;.</strong> A primeira parte da tela mostra certificados <strong>pagos</strong> (PositiveSSL, PositiveSSL Wildcard, InstantSSL, InstantSSL Wildcard e PositiveSSL EV). Eles são vendidos por uma empresa terceira, não pela NT Web, e não são necessários para um site comum. O certificado gratuito fica mais abaixo na página.</p>
+</div>
+<ol start="4">
+<li>Role a tela até <strong>Mais opções</strong>. Em <strong>Instale um certificado básico gratuito fornecido por Let's Encrypt</strong>, clique em <strong>Instalar</strong>.</li>
+<li>Na tela seguinte, mantenha marcado <strong>Proteja o nome de domínio</strong> e marque também:
+<ul>
+<li><strong>Inclua um subdomínio &quot;www&quot; para o domínio e cada alias selecionado</strong>;</li>
+<li><strong>Webmail protegido neste domínio</strong>;</li>
+<li><strong>E-mail seguro neste domínio</strong> e <strong>Atribua o certificado ao domínio de e-mail</strong> (IMAP, POP, SMTP).</li>
+</ul></li>
+<li>Em <strong>Método de validação de domínio</strong>, deixe <strong>HTTP: um arquivo no website (http-01)</strong>. A opção <strong>DNS: um registro TXT na zona DNS</strong> só é necessária para o certificado curinga (<strong>Proteger o domínio curinga (incluindo www e webmail)</strong>), que você normalmente não precisa.</li>
+<li>Clique em <strong>Pegue de graça</strong> e aguarde a confirmação.</li>
+</ol>
+<p>Esta tela não pede e-mail. Ao continuar, você concorda com os termos do Let's Encrypt. O certificado é renovado automaticamente 30 dias antes de expirar.</p>
+<p>Depois disso, abra o site com <code>https://seudominio.com.br</code> e confira o cadeado.</p>
+
+<a id="ssl-redirect" name="ssl-redirect"></a>
+<h3 style="color: #1e40af;">Redirecionar de HTTP para HTTPS</h3>
+<p>Mesmo com o certificado instalado, quem digita <code>http://</code> ainda pode abrir a versão sem cadeado. Para forçar a versão segura:</p>
+<ol>
+<li>No Plesk, em <strong>Websites e Domínios</strong>, abra o domínio e vá na aba <strong>Hospedagem &amp; DNS</strong>.</li>
+<li>Clique em <strong>Configurações de Hospedagem</strong>.</li>
+<li>Na seção <strong>Suporte SSL/TLS</strong>, confira se o campo <strong>Certificado</strong> mostra o certificado instalado.</li>
+<li>Marque <strong>Redirecionar visitantes de HTTP para HTTPS usando um redirecionamento 301 amigável do SEO</strong> e salve.</li>
+<li>Teste digitando <code>http://seudominio.com.br</code>: o navegador deve ir para <code>https://</code>.</li>
+</ol>
+<div style="background: #fffbeb; border-left: 4px solid #d97706; padding: 12px 16px; margin: 16px 0; border-radius: 4px;">
+<p style="margin: 0; color: #78350f;"><strong>Sites WordPress:</strong> depois de ativar o SSL, confira em <strong>Configurações &gt; Geral</strong> do WordPress se os endereços começam com <code>https://</code>.</p>
+</div>
+
+<a id="ssl-area" name="ssl-area"></a>
+<h3 style="color: #1e40af;">Pela Área do Cliente</h3>
+<p>Na página do serviço, no menu <strong>Manage Account</strong>, a opção <strong>SSL Certificates</strong> também permite emitir o certificado: clique em <strong>Generate Certificate</strong> (gerar certificado) e siga as telas. Use o caminho que achar mais simples; o resultado é o mesmo.</p>
+
+<a id="php" name="php"></a>
+<h2>Versão do PHP</h2>
+<p>O PHP é a linguagem em que a maioria dos sites (como o WordPress) é feita. O Plesk oferece as versões <strong>7.3 a 8.3</strong>. Versões mais novas são mais rápidas e seguras, mas sites antigos podem não funcionar nelas.</p>
+<ol>
+<li>Na página do serviço, no menu <strong>Manage Account</strong>, clique em <strong>PHP Settings</strong>.</li>
+<li>Escolha o domínio e a versão do PHP desejada. Se precisar, ajuste também as configurações disponíveis.</li>
+<li>Salve e abra o site para testar.</li>
+</ol>
+<p>A mudança vale <strong>apenas para o site escolhido</strong>. Outros sites do mesmo plano mantêm a versão que já usam.</p>
+<div style="background: #fef2f2; border-left: 4px solid #dc2626; padding: 12px 16px; margin: 12px 0; border-radius: 4px;">
+<p style="margin: 0; color: #7f1d1d;"><strong>Mudou a versão e o site deu erro?</strong> Volte para a versão anterior e o site normaliza. Em seguida, peça ao responsável pelo site (ou ao seu desenvolvedor) para atualizar o tema e os plugins antes de tentar de novo. Faça um backup antes de testar versões novas.</p>
+</div>
+
+<a id="dominios" name="dominios"></a>
+<h2>Subdomínios, domínios adicionais e aliases</h2>
+<div style="display: flex; flex-wrap: wrap; gap: 16px; margin: 16px 0 24px;">
+<div style="flex: 1; min-width: 260px; background: #eff6ff; border-left: 4px solid #2563eb; padding: 16px 20px; border-radius: 4px;">
+<p style="margin: 0 0 8px; font-size: 13px; text-transform: uppercase; letter-spacing: .5px; color: #1e40af; font-weight: bold;">Subdomínio</p>
+<p style="margin: 0; color: #1e3a8a;"><span style="font-size: 10pt;">Um endereço dentro do seu domínio, como <code>loja.seudominio.com.br</code>, com site próprio.</span></p>
+</div>
+<div style="flex: 1; min-width: 260px; background: #faf5ff; border-left: 4px solid #9333ea; padding: 16px 20px; border-radius: 4px;">
+<p style="margin: 0 0 8px; font-size: 13px; text-transform: uppercase; letter-spacing: .5px; color: #6b21a8; font-weight: bold;">Domínio adicional</p>
+<p style="margin: 0; color: #581c87;"><span style="font-size: 10pt;">Outro domínio, com outro site, hospedado no mesmo plano.</span></p>
+</div>
+<div style="flex: 1; min-width: 260px; background: #f0fdf4; border-left: 4px solid #15803d; padding: 16px 20px; border-radius: 4px;">
+<p style="margin: 0 0 8px; font-size: 13px; text-transform: uppercase; letter-spacing: .5px; color: #166534; font-weight: bold;">Alias de domínio</p>
+<p style="margin: 0; color: #14532d;"><span style="font-size: 10pt;">Um segundo nome que abre o <em>mesmo</em> site (por exemplo, a versão <code>.com</code> do seu <code>.com.br</code>).</span></p>
+</div>
+</div>
+
+<a id="subdominio" name="subdominio"></a>
+<h3 style="color: #1e40af;">Criar um subdomínio</h3>
+<ol>
+<li>Na página do serviço, no menu <strong>Manage Account</strong>, clique em <strong>Subdomains</strong>.</li>
+<li>Clique em <strong>Create Subdomain</strong> (criar subdomínio).</li>
+<li>Digite o nome (por exemplo, <code>loja</code>) e confirme. O endereço fica <code>loja.seudominio.com.br</code>.</li>
+<li>Envie os arquivos do site desse subdomínio como explicado em &quot;Publicar o site: WordPress, arquivos e bancos de dados&quot;.</li>
+</ol>
+<p>Se o DNS do domínio é gerenciado pela NT Web, o registro DNS do subdomínio é criado automaticamente. Se o DNS fica em outro lugar, você precisa criar o registro lá.</p>
+
+<a id="adicional" name="adicional"></a>
+<h3 style="color: #1e40af;">Adicionar outro domínio (Addon Domains)</h3>
+<ol>
+<li>No menu <strong>Manage Account</strong>, clique em <strong>Addon Domains</strong>.</li>
+<li>Informe o domínio que quer hospedar no plano.</li>
+<li>Faça o domínio apontar para a hospedagem (veja &quot;Apontar o domínio para a hospedagem&quot;).</li>
+<li>Publique o site dele e instale o SSL gratuito, como explicado acima.</li>
+</ol>
+<p>Cada domínio adicional tem seus próprios arquivos e seu próprio certificado.</p>
+
+<a id="alias" name="alias"></a>
+<h3 style="color: #1e40af;">Criar um alias (Domain Aliases)</h3>
+<ol>
+<li>No menu <strong>Manage Account</strong>, clique em <strong>Domain Aliases</strong>.</li>
+<li>Informe o nome extra que deve abrir o mesmo site.</li>
+<li>Faça esse nome apontar para a hospedagem.</li>
+</ol>
+<p>O alias mostra o mesmo conteúdo do domínio original. Se quiser que visitantes sejam levados ao nome principal, use um redirecionamento em vez de alias.</p>
+
+<a id="faq" name="faq"></a>
+<h2>Perguntas frequentes</h2>
+<a id="faq-ssl-falhou" name="faq-ssl-falhou"></a>
+<h3>O SSL não foi emitido</h3>
+<p>Quase sempre o domínio ainda não aponta para a hospedagem, ou o DNS ainda está propagando (pode levar algumas horas). Confirme o apontamento, aguarde e tente de novo. Se continuar falhando, abra um ticket.</p>
+<a id="faq-nao-seguro" name="faq-nao-seguro"></a>
+<h3>O cadeado aparece, mas o navegador diz &quot;parcialmente seguro&quot;</h3>
+<p>O site ainda carrega imagens ou arquivos por <code>http://</code>. Em sites WordPress, confira os endereços em <strong>Configurações &gt; Geral</strong> e, se preciso, peça ao desenvolvedor para trocar os links antigos por <code>https://</code>.</p>
+
+<div style="background: #f0f9ff; border-left: 4px solid #0369a1; padding: 16px 20px; margin: 24px 0 0; border-radius: 4px;">
+<p style="margin: 0 0 8px; font-size: 15px; color: #0c4a6e;"><strong>Precisa de ajuda?</strong> Abra um ticket com o domínio e uma descrição do que aparece na tela.</p>
+<p style="margin: 0;"><a style="display: inline-block; background: #0369a1; color: #fff; padding: 8px 16px; border-radius: 4px; text-decoration: none; font-weight: 600;" href="https://novo.ntweb.net.br/submitticket.php" target="_blank" rel="noopener noreferrer">Abrir ticket de suporte</a></p>
+</div>
+
+<!-- WHMCS Metadata -->
+<!--
+Título: Certificado SSL, PHP e domínios adicionais
+Categoria: NT Host
+Tags: nt-host, plesk, ssl, php, dominios
+-->
