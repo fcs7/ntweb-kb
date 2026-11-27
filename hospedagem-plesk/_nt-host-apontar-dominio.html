@@ -1,0 +1,123 @@
+<div style="background: #f0f9ff; border-left: 4px solid #0369a1; padding: 16px 20px; margin: 0 0 24px; border-radius: 4px;">
+<p style="margin: 0 0 8px; font-size: 15px; color: #0c4a6e;"><strong>Resumo:</strong> para o site e o e-mail funcionarem, o domínio precisa apontar para a hospedagem. Há dois caminhos: trocar os <strong>nameservers</strong> no local onde o domínio foi registrado (mais simples) ou manter o DNS onde está e criar os registros à mão.</p>
+</div>
+
+<div style="background: #fffbeb; border-left: 4px solid #d97706; padding: 12px 16px; margin: 16px 0; border-radius: 4px;">
+<p style="margin: 0; color: #78350f;"><strong>Troque o domínio de exemplo pelo seu.</strong> Neste artigo, <code>seudominio.com.br</code> representa o domínio do seu próprio site ou hospedagem. Substitua pelo seu. Exemplo: se o seu site é <code>lojadamaria.com.br</code>, o webmail fica em <code>webmail.lojadamaria.com.br</code> e o servidor de e-mail em <code>mail.lojadamaria.com.br</code>.</p>
+</div>
+
+<div style="background: #fffbeb; border-left: 4px solid #d97706; padding: 12px 16px; margin: 16px 0; border-radius: 4px;">
+<p style="margin: 0; color: #78350f;"><strong>Cuidado com o e-mail:</strong> se o domínio já usa e-mail em outro lugar, o e-mail <strong>para de chegar</strong> quando o MX deixa de apontar para lá. Crie as contas na hospedagem e confira o MX antes de mudar.</p>
+</div>
+
+<a id="antes" name="antes"></a>
+<h2>Antes de começar</h2>
+
+<ol>
+<li>Entre na <a href="https://novo.ntweb.net.br/clientarea.php" target="_blank" rel="noopener noreferrer">Área do Cliente</a> &gt; <strong>Meus Serviços</strong> e clique na hospedagem.</li>
+<li>Na <strong>Visão geral</strong>, anote os <strong>Nomes de Servidores</strong> e o <strong>Endereço IP</strong>.</li>
+<li>Tenha em mãos o acesso ao local onde o domínio foi registrado (por exemplo, o Registro.br).</li>
+</ol>
+
+<p>Os nameservers mudam de servidor para servidor. Copie sempre da página do seu serviço, nunca de outro cliente ou de outro artigo.</p>
+
+<a id="opcoes" name="opcoes"></a>
+<h2>Escolha o caminho</h2>
+
+<div style="display: flex; flex-wrap: wrap; gap: 16px; margin: 16px 0 24px;">
+<div style="flex: 1; min-width: 260px; background: #eff6ff; border-left: 4px solid #2563eb; padding: 16px 20px; border-radius: 4px;">
+<p style="margin: 0 0 8px; font-size: 13px; text-transform: uppercase; letter-spacing: .5px; color: #1e40af; font-weight: bold;">Opção A: trocar os nameservers</p>
+<p style="margin: 0; color: #1e3a8a;">O DNS passa a ser da hospedagem. Você gerencia tudo em <strong>DNS Settings</strong>. É o caminho mais simples.</p>
+</div>
+<div style="flex: 1; min-width: 260px; background: #faf5ff; border-left: 4px solid #9333ea; padding: 16px 20px; border-radius: 4px;">
+<p style="margin: 0 0 8px; font-size: 13px; text-transform: uppercase; letter-spacing: .5px; color: #6b21a8; font-weight: bold;">Opção B: manter o DNS onde está</p>
+<p style="margin: 0; color: #581c87;">Você cria os registros A, MX e TXT (SPF) no DNS atual. Serve se o DNS já atende outros serviços.</p>
+</div>
+</div>
+
+<a id="opcao-a" name="opcao-a"></a>
+<h2>Opção A: trocar os nameservers</h2>
+
+<ol>
+<li>Entre no painel do registro do domínio (Registro.br ou outro).</li>
+<li>Abra a área de <strong>DNS</strong> ou <strong>servidores DNS</strong> do domínio.</li>
+<li>Troque os nameservers atuais pelos que aparecem em <strong>Nomes de Servidores</strong> na página do serviço.</li>
+<li>Salve e aguarde a propagação.</li>
+</ol>
+
+<p>Depois da troca, o DNS fica na hospedagem. Para criar ou editar registros, use <strong>DNS Settings</strong> no menu <strong>Manage Account</strong>.</p>
+
+<a id="opcao-b" name="opcao-b"></a>
+<h2>Opção B: criar os registros no DNS atual</h2>
+
+<p>Crie estes registros no painel de DNS onde o domínio está:</p>
+
+<div style="overflow-x: auto; margin: 16px 0;">
+<table style="border-collapse: collapse; width: 100%; min-width: 480px;">
+<thead><tr><th style="background: #f1f5f9; color: #0f172a; border: 1px solid #cbd5e1; padding: 8px 10px; text-align: left;">Tipo</th><th style="background: #f1f5f9; color: #0f172a; border: 1px solid #cbd5e1; padding: 8px 10px; text-align: left;">Nome</th><th style="background: #f1f5f9; color: #0f172a; border: 1px solid #cbd5e1; padding: 8px 10px; text-align: left;">Valor</th></tr></thead>
+<tbody>
+<tr><td style="border: 1px solid #cbd5e1; padding: 8px 10px; vertical-align: top;">A</td><td style="border: 1px solid #cbd5e1; padding: 8px 10px; vertical-align: top;"><code>@</code> (o próprio domínio)</td><td style="border: 1px solid #cbd5e1; padding: 8px 10px; vertical-align: top;">Endereço IP da hospedagem, mostrado na página do serviço</td></tr>
+<tr><td style="border: 1px solid #cbd5e1; padding: 8px 10px; vertical-align: top;">A</td><td style="border: 1px solid #cbd5e1; padding: 8px 10px; vertical-align: top;"><code>www</code></td><td style="border: 1px solid #cbd5e1; padding: 8px 10px; vertical-align: top;">O mesmo IP</td></tr>
+<tr><td style="border: 1px solid #cbd5e1; padding: 8px 10px; vertical-align: top;">MX</td><td style="border: 1px solid #cbd5e1; padding: 8px 10px; vertical-align: top;"><code>@</code></td><td style="border: 1px solid #cbd5e1; padding: 8px 10px; vertical-align: top;">Como indicado no Plesk (veja abaixo)</td></tr>
+<tr><td style="border: 1px solid #cbd5e1; padding: 8px 10px; vertical-align: top;">TXT (SPF)</td><td style="border: 1px solid #cbd5e1; padding: 8px 10px; vertical-align: top;"><code>@</code></td><td style="border: 1px solid #cbd5e1; padding: 8px 10px; vertical-align: top;">Como indicado no Plesk (veja abaixo)</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>Os valores de MX e TXT (SPF) aparecem no Plesk, na área de DNS do domínio. Abra o Plesk por <strong>One Click Login</strong> &gt; <strong>Plesk</strong> e copie os valores de lá.</p>
+
+<p>Caminho no Plesk: <strong>Websites e Domínios</strong> &gt; seu domínio &gt; aba <strong>Hospedagem &amp; DNS</strong> &gt; <strong>DNS</strong>. Os registros são vistos e editados nessa tela.</p>
+
+<p>Se você vai trazer as caixas de e-mail de outro provedor, a aba <strong>E-mail</strong> do domínio tem a opção <strong>Importação de E-mail</strong>, que importa as caixas do provedor antigo.</p>
+
+<a id="propagacao" name="propagacao"></a>
+<h2>Quanto tempo demora</h2>
+
+<p>A mudança pode levar <strong>até 48 horas</strong> para valer em todo lugar. Em geral é mais rápido. Nesse período, o site pode abrir para uns e não para outros. É normal.</p>
+
+<div style="background: #fef2f2; border-left: 4px solid #dc2626; padding: 12px 16px; margin: 16px 0; border-radius: 4px;">
+<p style="margin: 0; color: #7f1d1d;"><strong>Não troque os nameservers de novo</strong> durante a espera. Isso só prolonga o processo.</p>
+</div>
+
+<a id="como-conferir" name="como-conferir"></a>
+<h2>Como saber se funcionou</h2>
+
+<ul>
+<li>Abra <code>seudominio.com.br</code> no navegador. Se mostrar o site (ou a página inicial da hospedagem), o apontamento funcionou.</li>
+<li>Teste em uma janela anônima, ou no celular com os dados móveis, para evitar a memória do navegador.</li>
+<li>Use uma ferramenta pública de consulta de DNS e confira se o IP do domínio é o da página do serviço.</li>
+</ul>
+
+<a id="email-mx" name="email-mx"></a>
+<h2>E-mail: o MX precisa estar certo</h2>
+
+<p>O registro <strong>MX</strong> diz para onde vai o e-mail do domínio. Enquanto ele apontar para outro lugar, as mensagens vão para lá, e não para a hospedagem.</p>
+
+<ul>
+<li>Na <strong>Opção A</strong>, o MX da hospedagem passa a valer sozinho.</li>
+<li>Na <strong>Opção B</strong>, você precisa criar o MX.</li>
+<li>Se você já tem e-mail em outro serviço, crie as contas na hospedagem e copie as mensagens antigas <strong>antes</strong> de mudar o MX.</li>
+</ul>
+
+<a id="suporte" name="suporte"></a>
+<h2>Ainda precisa de ajuda?</h2>
+
+<p>Abra um ticket e nossa equipe responde. Informe o domínio da hospedagem e descreva o que acontece, com a mensagem de erro se houver.</p>
+
+<ul>
+<li>Pela Área do Cliente: <strong>Suporte</strong> &gt; <strong>Abrir Ticket</strong>, departamento <strong>NOC - Datacenter</strong>.</li>
+<li>Pelo telefone: <strong>0800 042 0909</strong>.</li>
+</ul>
+
+<p><a style="display: inline-block; background: #0369a1; color: #fff; padding: 10px 20px; border-radius: 4px; text-decoration: none; font-weight: 600;" href="https://novo.ntweb.net.br/clientarea.php" target="_blank" rel="noopener noreferrer">Abrir ticket na Área do Cliente</a></p>
+
+<div style="background: #fef2f2; border-left: 4px solid #dc2626; padding: 12px 16px; margin: 16px 0; border-radius: 4px;">
+<p style="margin: 0; color: #7f1d1d;"><strong>Nunca envie senhas em um ticket.</strong> Se precisarmos acessar algo, orientamos o caminho seguro.</p>
+</div>
+
+<!-- WHMCS Metadata -->
+<!--
+Título: Apontar o domínio para a hospedagem
+Categoria: NT Host
+Tags: nt-host, hospedagem, plesk, dns, dominio
+-->

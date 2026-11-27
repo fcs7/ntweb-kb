@@ -1,0 +1,163 @@
+<div style="background: #f0f9ff; border-left: 4px solid #0369a1; padding: 16px 20px; margin: 0 0 24px; border-radius: 4px;">
+<p style="margin: 0 0 8px; font-size: 15px; color: #0c4a6e;"><strong>Resumo:</strong> há três jeitos de colocar seu site no ar: instalar o <strong>WordPress</strong> em poucos cliques, enviar os arquivos pelo <strong>gerenciador de arquivos</strong> do Plesk ou usar o <strong>FTP</strong> com o FileZilla. Os arquivos públicos ficam sempre na pasta <code>httpdocs</code>.</p>
+<p style="margin: 0;"><a style="display: inline-block; background: #0369a1; color: #fff; padding: 8px 16px; border-radius: 4px; text-decoration: none; font-weight: 600;" href="https://novo.ntweb.net.br" target="_blank" rel="noopener noreferrer">Abrir a Área do Cliente</a></p>
+</div>
+
+<div style="background: #fffbeb; border-left: 4px solid #d97706; padding: 12px 16px; margin: 16px 0; border-radius: 4px;">
+<p style="margin: 0; color: #78350f;"><strong>Troque <code>seudominio.com.br</code> pelo domínio do seu site.</strong> Os endereços deste artigo usam <code>seudominio.com.br</code> como exemplo. Se o seu site é <code>lojadamaria.com.br</code>, onde aparecer <code>seudominio.com.br</code> você usa <code>lojadamaria.com.br</code>.</p>
+</div>
+
+<a id="escolha" name="escolha"></a>
+<h2>Qual caminho escolher</h2>
+<div style="display: flex; flex-wrap: wrap; gap: 16px; margin: 16px 0 24px;">
+<div style="flex: 1; min-width: 260px; background: #eff6ff; border-left: 4px solid #2563eb; padding: 16px 20px; border-radius: 4px;">
+<p style="margin: 0 0 8px; font-size: 13px; text-transform: uppercase; letter-spacing: .5px; color: #1e40af; font-weight: bold;">WordPress</p>
+<p style="margin: 0; color: #1e3a8a;"><span style="font-size: 10pt;">Você ainda não tem site e quer montar um com temas e plugins. A instalação é automática.</span></p>
+</div>
+<div style="flex: 1; min-width: 260px; background: #faf5ff; border-left: 4px solid #9333ea; padding: 16px 20px; border-radius: 4px;">
+<p style="margin: 0 0 8px; font-size: 13px; text-transform: uppercase; letter-spacing: .5px; color: #6b21a8; font-weight: bold;">Arquivos prontos</p>
+<p style="margin: 0; color: #581c87;"><span style="font-size: 10pt;">Seu site já existe (feito por um profissional ou em outra hospedagem). Envie os arquivos pelo Plesk ou por FTP.</span></p>
+</div>
+</div>
+
+<a id="acesso" name="acesso"></a>
+<h2>Onde fica tudo</h2>
+<ol>
+<li>Acesse <a href="https://novo.ntweb.net.br" target="_blank" rel="noopener noreferrer">novo.ntweb.net.br</a> e entre com seu login.</li>
+<li>Abra <strong>Meus Serviços</strong> e clique no seu plano de hospedagem.</li>
+<li>No menu da esquerda, em <strong>Manage Account</strong> (gerenciar conta), estão as ferramentas deste artigo.</li>
+<li>No grupo <strong>One Click Login</strong> há atalhos que abrem <strong>Backup Manager</strong>, <strong>Plesk</strong>, <strong>Webmail</strong> e <strong>WP Toolkit</strong> já logados, sem pedir senha de novo.</li>
+</ol>
+
+<a id="wordpress" name="wordpress"></a>
+<h2>Instalar o WordPress</h2>
+<ol>
+<li>No menu <strong>Manage Account</strong>, clique em <strong>WordPress Toolkit</strong>. (Outro caminho: <strong>One Click Login</strong> &gt; <strong>WP Toolkit</strong>.)</li>
+<li>Clique no botão <strong>New Installation</strong> (nova instalação). No Plesk, o mesmo recurso fica no menu <strong>WordPress</strong>.</li>
+<li>Preencha o formulário: o domínio, a pasta de instalação, o usuário e a senha do administrador do WordPress e o idioma.</li>
+<li>Confirme e aguarde a instalação terminar.</li>
+</ol>
+<p>Ao terminar, o site aparece na lista do WordPress Toolkit, com as colunas <strong>Name</strong> (nome), <strong>URL</strong> e <strong>Version</strong> (versão do WordPress). Pelo endereço da coluna URL você acessa o site e, adicionando <code>/wp-admin</code> ao final, o painel do WordPress.</p>
+<div style="background: #fffbeb; border-left: 4px solid #d97706; padding: 12px 16px; margin: 16px 0; border-radius: 4px;">
+<p style="margin: 0; color: #78350f;"><strong>Anote o usuário e a senha do administrador.</strong> Você precisa deles para entrar no painel do WordPress. Eles não são os mesmos da Área do Cliente.</p>
+</div>
+
+<a id="aplicativos" name="aplicativos"></a>
+<h2>Outros aplicativos</h2>
+<p>Em <strong>Manage Account</strong> &gt; <strong>Applications</strong> você vê os aplicativos instalados no plano. A tela tem duas abas: <strong>Applications</strong> (aplicativos) e <strong>Backups</strong> (cópias de segurança dos aplicativos; veja &quot;Backup e restauração&quot;).</p>
+
+<a id="gerenciador" name="gerenciador"></a>
+<h2>Enviar arquivos pelo Plesk</h2>
+<p>Bom para sites pequenos ou ajustes rápidos, sem instalar nada no computador.</p>
+<ol>
+<li>No grupo <strong>One Click Login</strong>, clique em <strong>Plesk</strong>.</li>
+<li>No Plesk, abra <strong>Websites e Domínios</strong>.</li>
+<li>No cartão do seu domínio, clique em <strong>Gerenciador de arquivos em httpdocs</strong>. (Outro caminho: menu <strong>Arquivos</strong>.)</li>
+<li>Dentro da pasta <code>httpdocs</code>, use o botão de upload (ícone &quot;+&quot;) para enviar os arquivos do site.</li>
+</ol>
+
+<a id="httpdocs" name="httpdocs"></a>
+<h2>A pasta httpdocs</h2>
+<p>Tudo o que fica dentro de <code>httpdocs</code> é o que as pessoas veem quando abrem <code>seudominio.com.br</code>. Regras simples:</p>
+<ul>
+<li>A página inicial deve se chamar <code>index.html</code> ou <code>index.php</code> e ficar <strong>direto dentro</strong> de <code>httpdocs</code>, não em uma subpasta.</li>
+<li>Se você enviar uma pasta inteira (por exemplo, <code>meusite/</code>), o site passa a ficar em <code>seudominio.com.br/meusite/</code>. Envie o <strong>conteúdo</strong> da pasta, não a pasta.</li>
+<li>Instalações do WordPress feitas pelo WP Toolkit já ficam no lugar certo. Não mexa nos arquivos do WordPress por FTP sem necessidade.</li>
+</ul>
+<div style="background: #fef2f2; border-left: 4px solid #dc2626; padding: 12px 16px; margin: 12px 0; border-radius: 4px;">
+<p style="margin: 0; color: #7f1d1d;"><strong>Não apague a pasta <code>httpdocs</code> nem arquivos que você não reconhece.</strong> Apagar os arquivos do WordPress tira o site do ar. Se tiver dúvida, faça um backup antes.</p>
+</div>
+
+<a id="ftp" name="ftp"></a>
+<h2>Enviar arquivos por FTP (FileZilla)</h2>
+<p>Ideal para sites grandes ou para quem atualiza com frequência. Use <strong>FTPS</strong> (FTP com TLS explícito): é o FTP com criptografia, e protege sua senha.</p>
+
+<a id="ftp-criar" name="ftp-criar"></a>
+<h3 style="color: #1e40af;">1. Criar a conta FTP</h3>
+<ol>
+<li>Na Área do Cliente, abra o plano em <strong>Meus Serviços</strong>.</li>
+<li>No menu <strong>Manage Account</strong>, clique em <strong>FTP Access</strong>.</li>
+<li>Clique em <strong>Create Account</strong> (criar conta) e defina o nome de usuário e uma senha forte.</li>
+</ol>
+<p>A lista mostra suas contas com as colunas <strong>Name</strong> (usuário) e <strong>Path</strong> (pasta que essa conta acessa).</p>
+
+<a id="ftp-filezilla" name="ftp-filezilla"></a>
+<h3 style="color: #1e40af;">2. Conectar no FileZilla</h3>
+<table style="border-collapse: collapse; width: 100%; margin: 12px 0;">
+<thead>
+<tr>
+<th style="text-align: left; padding: 8px 12px; background: #eff6ff; color: #1e3a8a; border: 1px solid #bfdbfe;">Campo</th>
+<th style="text-align: left; padding: 8px 12px; background: #eff6ff; color: #1e3a8a; border: 1px solid #bfdbfe;">O que digitar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding: 8px 12px; border: 1px solid #bfdbfe;"><strong>Servidor (host)</strong></td>
+<td style="padding: 8px 12px; border: 1px solid #bfdbfe;"><code>seudominio.com.br</code>, ou o IP do servidor mostrado na página do serviço</td>
+</tr>
+<tr>
+<td style="padding: 8px 12px; border: 1px solid #bfdbfe;"><strong>Porta</strong></td>
+<td style="padding: 8px 12px; border: 1px solid #bfdbfe;">21</td>
+</tr>
+<tr>
+<td style="padding: 8px 12px; border: 1px solid #bfdbfe;"><strong>Protocolo</strong></td>
+<td style="padding: 8px 12px; border: 1px solid #bfdbfe;">FTP, com criptografia: <strong>Exigir FTP explícito sobre TLS</strong></td>
+</tr>
+<tr>
+<td style="padding: 8px 12px; border: 1px solid #bfdbfe;"><strong>Usuário e senha</strong></td>
+<td style="padding: 8px 12px; border: 1px solid #bfdbfe;">os que você criou em <strong>FTP Access</strong></td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>No FileZilla, abra o <strong>Gerenciador de Sites</strong> e crie um novo site com os dados da tabela.</li>
+<li>Clique em <strong>Conectar</strong>. Na primeira vez, o FileZilla mostra o certificado do servidor: confirme e marque para confiar.</li>
+<li>No painel da direita (servidor), entre em <code>httpdocs</code>. No painel da esquerda (seu computador), selecione os arquivos e arraste para a direita.</li>
+</ol>
+<div style="background: #fffbeb; border-left: 4px solid #d97706; padding: 12px 16px; margin: 16px 0; border-radius: 4px;">
+<p style="margin: 0; color: #78350f;"><strong>Atenção ao usuário e à pasta.</strong> A coluna <strong>Path</strong> em FTP Access mostra a pasta inicial da conta. Se não encontrar <code>httpdocs</code>, confira essa coluna.</p>
+</div>
+<div style="background: #fef2f2; border-left: 4px solid #dc2626; padding: 12px 16px; margin: 12px 0; border-radius: 4px;">
+<p style="margin: 0; color: #7f1d1d;"><strong>Evite o FTP sem criptografia.</strong> Selecionar &quot;usar FTP simples&quot; envia a senha às claras pela internet. Use sempre FTP explícito sobre TLS.</p>
+</div>
+<p>O plano de hospedagem <strong>não tem acesso SSH</strong>. Para enviar arquivos, use o FTP ou o gerenciador de arquivos do Plesk.</p>
+
+<a id="banco" name="banco"></a>
+<h2>Criar um banco de dados</h2>
+<p>Sites feitos em PHP, como o WordPress, guardam textos e configurações em um banco de dados. O WP Toolkit já cria o banco sozinho. Crie manualmente só se a instalação do seu sistema pedir.</p>
+<ol>
+<li>No menu <strong>Manage Account</strong>, clique em <strong>Databases</strong>. A tela tem duas abas: <strong>Databases</strong> (os bancos) e <strong>Users</strong> (os usuários do banco).</li>
+<li>Clique em <strong>Create Database</strong> (criar banco) e dê um nome.</li>
+<li>Um banco precisa de um usuário com permissão para usá-lo. Crie o usuário e a senha na aba <strong>Users</strong> e dê a ele permissão no banco.</li>
+<li>Anote o nome do banco, o usuário e a senha. O sistema que você instala vai pedir esses três dados, além do <strong>host</strong> do banco.</li>
+</ol>
+<p>Em aplicativos instalados na própria hospedagem, use <code>localhost</code> como host. No Plesk, <strong>Bancos de dados</strong> &gt; <strong>Adicionar banco de dados</strong> cria o banco já com um usuário, e <strong>Informação de Conexão</strong> (no <strong>Painel</strong> do domínio) mostra os valores exatos.</p>
+<h3 style="color: #1e40af;">Ver o conteúdo do banco (phpMyAdmin)</h3>
+<ol>
+<li>No grupo <strong>One Click Login</strong>, clique em <strong>Plesk</strong>.</li>
+<li>Abra a área de <strong>Bancos de Dados</strong> do seu domínio e clique em <strong>phpMyAdmin</strong>.</li>
+</ol>
+<div style="background: #fef2f2; border-left: 4px solid #dc2626; padding: 12px 16px; margin: 12px 0; border-radius: 4px;">
+<p style="margin: 0; color: #7f1d1d;"><strong>Cuidado no phpMyAdmin.</strong> Apagar tabelas ou linhas não tem &quot;desfazer&quot;. Faça um backup antes de qualquer alteração.</p>
+</div>
+
+<a id="faq" name="faq"></a>
+<h2>Perguntas frequentes</h2>
+<a id="faq-site-nao-aparece" name="faq-site-nao-aparece"></a>
+<h3>Enviei os arquivos mas o site não aparece</h3>
+<p>Confira se a página inicial (<code>index.html</code> ou <code>index.php</code>) está direto dentro de <code>httpdocs</code>. Confira também se o domínio já aponta para a hospedagem. Se acabou de mudar o DNS, a propagação pode levar até algumas horas.</p>
+<a id="faq-ftp-erro" name="faq-ftp-erro"></a>
+<h3>O FileZilla não conecta</h3>
+<p>Confira a porta (21), o usuário e a senha criados em <strong>FTP Access</strong> e se o protocolo está em <strong>FTP explícito sobre TLS</strong>. Se o domínio ainda não aponta para a hospedagem, use o IP do servidor, que aparece na página do serviço, em vez do domínio.</p>
+
+<div style="background: #f0f9ff; border-left: 4px solid #0369a1; padding: 16px 20px; margin: 24px 0 0; border-radius: 4px;">
+<p style="margin: 0 0 8px; font-size: 15px; color: #0c4a6e;"><strong>Precisa de ajuda para publicar?</strong> Abra um ticket com o endereço do seu site e conte o que já tentou.</p>
+<p style="margin: 0;"><a style="display: inline-block; background: #0369a1; color: #fff; padding: 8px 16px; border-radius: 4px; text-decoration: none; font-weight: 600;" href="https://novo.ntweb.net.br/submitticket.php" target="_blank" rel="noopener noreferrer">Abrir ticket de suporte</a></p>
+</div>
+
+<!-- WHMCS Metadata -->
+<!--
+Título: Publicar o site: WordPress, arquivos e bancos de dados
+Categoria: NT Host
+Tags: nt-host, plesk, wordpress, ftp, publicar-site
+-->

@@ -1,0 +1,168 @@
+<div style="background: #f0f9ff; border-left: 4px solid #0369a1; padding: 16px 20px; margin: 0 0 24px; border-radius: 4px;">
+<p style="margin: 0 0 8px; font-size: 15px; color: #0c4a6e;"><strong>Resumo:</strong> o webmail da sua hospedagem tem <strong>Calendário</strong> (com a sua <strong>Agenda</strong> e convites) e <strong>Contatos</strong> (lista de endereços). Os dois sincronizam com o celular e com o computador, sem custo extra. A configuração leva poucos minutos.</p>
+<p style="margin: 0;"><a style="display: inline-block; background: #0369a1; color: #fff; padding: 8px 16px; border-radius: 4px; text-decoration: none; font-weight: 600;" href="#sincronizar">Ir para a sincronização no celular</a></p>
+</div>
+
+<div style="background: #fffbeb; border-left: 4px solid #d97706; padding: 12px 16px; margin: 16px 0; border-radius: 4px;">
+<p style="margin: 0; color: #78350f;"><strong>Troque <code>seudominio.com.br</code> pelo domínio do seu site.</strong> Os endereços deste artigo usam <code>seudominio.com.br</code> como exemplo. Se o seu e-mail é <code>maria@lojadamaria.com.br</code>, o webmail fica em <code>webmail.lojadamaria.com.br</code> e o servidor de agenda em <code>dav.lojadamaria.com.br</code>.</p>
+</div>
+
+<a id="acesso" name="acesso"></a>
+<h2>Como entrar no webmail</h2>
+<p>Há dois caminhos:</p>
+<ol>
+<li><strong>Direto pelo endereço:</strong> abra <code>https://webmail.seudominio.com.br</code> e entre com seu e-mail completo e a senha da caixa.</li>
+<li><strong>Pela Área do Cliente:</strong> acesse <a href="https://novo.ntweb.net.br" target="_blank" rel="noopener noreferrer">novo.ntweb.net.br</a>, abra <strong>Meus Serviços</strong>, escolha o plano de hospedagem e, no grupo <strong>One Click Login</strong>, clique em <strong>Webmail</strong>. A caixa abre já logada.</li>
+</ol>
+
+<a id="agenda" name="agenda"></a>
+<h2>Agenda</h2>
+<p>No webmail, abra o menu <strong>Calendário</strong>. Você já encontra um calendário pronto, chamado <strong>Agenda</strong>.</p>
+<h3 style="color: #1e40af;">Criar um evento</h3>
+<ol>
+<li>No <strong>Calendário</strong>, clique no dia e no horário do compromisso, ou use o botão <strong>Novo evento</strong>.</li>
+<li>Preencha o <strong>Sumário</strong> (o título), a data e o horário. Se quiser, informe o <strong>Local</strong> e um <strong>Lembrete</strong>.</li>
+<li>Salve. O evento aparece no calendário <strong>Agenda</strong>.</li>
+</ol>
+<h3 style="color: #1e40af;">Convidar pessoas</h3>
+<ol>
+<li>Ao criar ou editar o evento, use <strong>Adicionar participante</strong> e informe o e-mail de cada convidado.</li>
+<li>Marque <strong>Enviar convites</strong> e salve. Cada convidado recebe um convite por e-mail e pode aceitar ou recusar.</li>
+</ol>
+<div style="background: #fffbeb; border-left: 4px solid #d97706; padding: 12px 16px; margin: 16px 0; border-radius: 4px;">
+<p style="margin: 0; color: #78350f;"><strong>Cada usuário vê apenas a própria agenda.</strong> Os compromissos de uma caixa não aparecem para as outras caixas do mesmo domínio. Para avisar alguém de um compromisso, envie um convite.</p>
+</div>
+
+<a id="contatos" name="contatos"></a>
+<h2>Contatos</h2>
+<p>A aba de contatos usa uma lista chamada <strong>Contatos</strong>, guardada no servidor. O que você salva no webmail fica disponível em qualquer aparelho sincronizado, e o contrário também vale. Assim, um contato novo salvo no celular aparece no webmail.</p>
+<p>Como na agenda, cada usuário vê apenas os próprios contatos.</p>
+
+<a id="sincronizar" name="sincronizar"></a>
+<h2>Sincronizar no celular e no computador</h2>
+<p>A sincronização usa dois padrões abertos: <strong>CalDAV</strong> (agenda) e <strong>CardDAV</strong> (contatos). Você não precisa saber como funcionam, só informar os dados da tabela abaixo.</p>
+
+<a id="dados" name="dados"></a>
+<h3 style="color: #1e40af;">Dados para configurar</h3>
+<table style="border-collapse: collapse; width: 100%; margin: 12px 0;">
+<thead>
+<tr>
+<th style="text-align: left; padding: 8px 12px; background: #eff6ff; color: #1e3a8a; border: 1px solid #bfdbfe;">Campo</th>
+<th style="text-align: left; padding: 8px 12px; background: #eff6ff; color: #1e3a8a; border: 1px solid #bfdbfe;">O que digitar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding: 8px 12px; border: 1px solid #bfdbfe;"><strong>Servidor</strong></td>
+<td style="padding: 8px 12px; border: 1px solid #bfdbfe;"><code>dav.seudominio.com.br</code></td>
+</tr>
+<tr>
+<td style="padding: 8px 12px; border: 1px solid #bfdbfe;"><strong>Usuário</strong></td>
+<td style="padding: 8px 12px; border: 1px solid #bfdbfe;">seu e-mail completo (por exemplo, <code>maria@seudominio.com.br</code>)</td>
+</tr>
+<tr>
+<td style="padding: 8px 12px; border: 1px solid #bfdbfe;"><strong>Senha</strong></td>
+<td style="padding: 8px 12px; border: 1px solid #bfdbfe;">a mesma senha do seu e-mail</td>
+</tr>
+<tr>
+<td style="padding: 8px 12px; border: 1px solid #bfdbfe;"><strong>Porta</strong></td>
+<td style="padding: 8px 12px; border: 1px solid #bfdbfe;">443 (conexão segura, https)</td>
+</tr>
+<tr>
+<td style="padding: 8px 12px; border: 1px solid #bfdbfe;"><strong>Endereço completo</strong></td>
+<td style="padding: 8px 12px; border: 1px solid #bfdbfe;"><code>https://dav.seudominio.com.br</code></td>
+</tr>
+</tbody>
+</table>
+<p>Alguns aplicativos descobrem o servidor sozinhos a partir do e-mail, porque os registros DNS de descoberta já estão publicados. Se o aplicativo pedir só o e-mail e a senha, tente primeiro desse jeito.</p>
+
+<a id="iphone" name="iphone"></a>
+<h3 style="color: #1e40af;">iPhone e iPad</h3>
+<p>O iPhone e o iPad aceitam CalDAV e CardDAV sem instalar nada.</p>
+<ol>
+<li>Abra <strong>Ajustes</strong> &gt; <strong>Calendário</strong> (para a agenda) ou <strong>Contatos</strong> (para os contatos).</li>
+<li>Toque em <strong>Contas</strong> &gt; <strong>Adicionar Conta</strong> &gt; <strong>Outra</strong>.</li>
+<li>Escolha <strong>Adicionar Conta CalDAV</strong> (agenda) ou <strong>Adicionar Conta CardDAV</strong> (contatos).</li>
+<li>Em <strong>Servidor</strong>, digite <code>dav.seudominio.com.br</code>. Em <strong>Usuário</strong>, o e-mail completo. Em <strong>Senha</strong>, a senha do e-mail.</li>
+<li>Toque em <strong>Seguinte</strong> e aguarde a verificação.</li>
+</ol>
+<p>Repita o processo para cada um (agenda e contatos).</p>
+
+<a id="android" name="android"></a>
+<h3 style="color: #1e40af;">Android</h3>
+<div style="background: #fffbeb; border-left: 4px solid #d97706; padding: 12px 16px; margin: 16px 0; border-radius: 4px;">
+<p style="margin: 0; color: #78350f;"><strong>O Android não tem suporte nativo a CalDAV.</strong> Para sincronizar, instale um aplicativo intermediário. Recomendamos o <strong>DAVx5</strong>, disponível na Play Store (pago) e gratuito na loja F-Droid.</p>
+</div>
+<ol>
+<li>Instale o <strong>DAVx5</strong> e abra o aplicativo.</li>
+<li>Toque para adicionar uma conta e escolha <strong>Login com URL e nome de usuário</strong>.</li>
+<li>Em <strong>URL base</strong>, digite <code>https://dav.seudominio.com.br</code>.</li>
+<li>Em <strong>Nome de usuário</strong>, o e-mail completo. Em <strong>Senha</strong>, a senha do e-mail.</li>
+<li>Avance e, na lista, marque as agendas e as listas de contatos que quer sincronizar (<strong>Agenda</strong> e <strong>Contatos</strong>).</li>
+</ol>
+<p>Depois disso, os eventos aparecem no aplicativo de calendário do celular e os contatos, na lista de contatos.</p>
+
+<a id="thunderbird" name="thunderbird"></a>
+<h3 style="color: #1e40af;">Thunderbird</h3>
+<p>Use uma versão recente do Thunderbird.</p>
+<p><strong>Agenda:</strong></p>
+<ol>
+<li>No painel de calendários, escolha <strong>Novo calendário</strong> &gt; <strong>Na rede</strong>.</li>
+<li>Em <strong>Usuário</strong>, digite seu e-mail completo. Em <strong>Local</strong>, digite <code>dav.seudominio.com.br</code>.</li>
+<li>Informe a senha quando pedir. O Thunderbird lista o calendário <strong>Agenda</strong>; marque-o e conclua.</li>
+</ol>
+<p><strong>Contatos:</strong></p>
+<ol>
+<li>Abra o <strong>Catálogo de endereços</strong> e escolha <strong>Novo catálogo CardDAV</strong>.</li>
+<li>Em <strong>Usuário</strong>, o e-mail completo. Em <strong>URL</strong>, <code>https://dav.seudominio.com.br</code>.</li>
+<li>Informe a senha e conclua.</li>
+</ol>
+
+<a id="outlook" name="outlook"></a>
+<h3 style="color: #1e40af;">Outlook</h3>
+<div style="background: #fef2f2; border-left: 4px solid #dc2626; padding: 12px 16px; margin: 12px 0; border-radius: 4px;">
+<p style="margin: 0; color: #7f1d1d;"><strong>O Outlook não sincroniza CalDAV por conta própria.</strong> Só funciona com um complemento de terceiros, como o <em>Outlook CalDav Synchronizer</em> (software livre). A NT Web <strong>não instala nem dá suporte</strong> a esse complemento. Se quiser, use o Thunderbird ou o celular para a agenda.</p>
+</div>
+
+<a id="limites" name="limites"></a>
+<h2>O que você precisa saber</h2>
+<ul>
+<li><strong>O domínio precisa ter ao menos uma caixa de e-mail.</strong> Sem caixa, não há agenda nem contatos.</li>
+<li><strong>Até 24 horas.</strong> O endereço <code>dav.seudominio.com.br</code> é criado automaticamente em até 24 horas depois da primeira caixa de e-mail do domínio. Se acabou de criar a caixa, aguarde.</li>
+<li><strong>DNS fora da NT Web.</strong> Se o DNS do seu domínio fica em outro lugar (por exemplo, Cloudflare), o endereço <code>dav</code> não é criado sozinho. Abra um ticket e peça a criação; nós passamos o que deve ser cadastrado lá.</li>
+<li><strong>Cada usuário vê só a própria agenda e os próprios contatos.</strong></li>
+</ul>
+
+<a id="faq" name="faq"></a>
+<h2>Perguntas frequentes</h2>
+
+<a id="faq-agenda-nao-aparece" name="faq-agenda-nao-aparece"></a>
+<h3>O menu Calendário não aparece no webmail</h3>
+<p>Entre pelo endereço <code>https://webmail.seudominio.com.br</code>, feche e abra o navegador e entre de novo (ou pressione Ctrl+F5 para recarregar a página por completo). Se o menu <strong>Calendário</strong> continuar sem aparecer, o recurso ainda não está ativo para o seu domínio ou servidor; abra um ticket informando o seu e-mail e o domínio, que o suporte verifica.</p>
+
+<a id="faq-celular-nao-sincroniza" name="faq-celular-nao-sincroniza"></a>
+<h3>O celular não sincroniza</h3>
+<ol>
+<li>Confira o servidor: deve ser <code>dav.seudominio.com.br</code>, com o <em>seu</em> domínio no lugar de <code>seudominio.com.br</code>.</li>
+<li>Confira o usuário: é o e-mail <strong>completo</strong>, com o <code>@</code> e o domínio, e não apenas a primeira parte.</li>
+<li>Confirme que a senha é a atual. Se você trocou a senha do e-mail, atualize no aplicativo.</li>
+<li>Se a caixa de e-mail é recente, lembre que o endereço <code>dav</code> pode levar até 24 horas para existir.</li>
+<li>Se o DNS do domínio fica fora da NT Web, o endereço <code>dav</code> precisa ser criado por nós. Abra um ticket.</li>
+</ol>
+<p>Se nada resolver, abra um ticket dizendo qual aparelho e qual aplicativo você usa, e em que passo apareceu o erro.</p>
+
+<a id="faq-outlook" name="faq-outlook"></a>
+<h3>Posso usar a agenda no Outlook?</h3>
+<p>Só com um complemento de terceiros (por exemplo, o <em>Outlook CalDav Synchronizer</em>), porque o Outlook não tem suporte nativo a CalDAV. A NT Web não mantém esse complemento e não consegue dar suporte a ele. Para usar sem complemento, prefira o webmail, o Thunderbird ou o celular.</p>
+
+<div style="background: #f0f9ff; border-left: 4px solid #0369a1; padding: 16px 20px; margin: 24px 0 0; border-radius: 4px;">
+<p style="margin: 0 0 8px; font-size: 15px; color: #0c4a6e;"><strong>Ficou com dúvida?</strong> Abra um ticket e conte o que aconteceu. Nossa equipe responde pela Área do Cliente.</p>
+<p style="margin: 0;"><a style="display: inline-block; background: #0369a1; color: #fff; padding: 8px 16px; border-radius: 4px; text-decoration: none; font-weight: 600;" href="https://novo.ntweb.net.br/submitticket.php" target="_blank" rel="noopener noreferrer">Abrir ticket de suporte</a></p>
+</div>
+
+<!-- WHMCS Metadata -->
+<!--
+Título: Webmail, Agenda e Contatos
+Categoria: NT Host
+Tags: nt-host, webmail, agenda, contatos, caldav, carddav
+-->

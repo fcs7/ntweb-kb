@@ -1,0 +1,60 @@
+<div style="background: #f0f9ff; border-left: 4px solid #0369a1; padding: 16px 20px; margin: 0 0 24px; border-radius: 4px;">
+<p style="margin: 0 0 8px; font-size: 15px; color: #0c4a6e;"><strong>Resumo:</strong> encontre o seu sintoma na tabela, veja a causa provável e siga a solução. Se não resolver, abra um ticket.</p>
+</div>
+
+<div style="background: #fffbeb; border-left: 4px solid #d97706; padding: 12px 16px; margin: 16px 0; border-radius: 4px;">
+<p style="margin: 0; color: #78350f;"><strong>Troque o domínio de exemplo pelo seu.</strong> Neste artigo, <code>seudominio.com.br</code> representa o domínio do seu próprio site ou hospedagem. Substitua pelo seu. Exemplo: se o seu site é <code>lojadamaria.com.br</code>, o webmail fica em <code>webmail.lojadamaria.com.br</code> e o servidor de e-mail em <code>mail.lojadamaria.com.br</code>.</p>
+</div>
+
+<div style="overflow-x: auto; margin: 16px 0;">
+<table style="border-collapse: collapse; width: 100%; min-width: 480px;">
+<thead><tr><th style="background: #f1f5f9; color: #0f172a; border: 1px solid #cbd5e1; padding: 8px 10px; text-align: left;">Sintoma</th><th style="background: #f1f5f9; color: #0f172a; border: 1px solid #cbd5e1; padding: 8px 10px; text-align: left;">Causa provável</th><th style="background: #f1f5f9; color: #0f172a; border: 1px solid #cbd5e1; padding: 8px 10px; text-align: left;">O que fazer</th></tr></thead>
+<tbody>
+<tr><td style="border: 1px solid #cbd5e1; padding: 8px 10px; vertical-align: top;">O site não abre</td><td style="border: 1px solid #cbd5e1; padding: 8px 10px; vertical-align: top;">O domínio ainda não aponta para a hospedagem, a mudança ainda está se propagando (até 48 horas) ou a fatura está vencida.</td><td style="border: 1px solid #cbd5e1; padding: 8px 10px; vertical-align: top;">Confira o apontamento (&quot;Apontar o domínio para a hospedagem&quot;) e o status na Área do Cliente. Teste em janela anônima e em outra rede.</td></tr>
+<tr><td style="border: 1px solid #cbd5e1; padding: 8px 10px; vertical-align: top;">Aviso de site não seguro no navegador</td><td style="border: 1px solid #cbd5e1; padding: 8px 10px; vertical-align: top;">O certificado SSL não foi ativado ou o site usa endereços antigos sem https.</td><td style="border: 1px solid #cbd5e1; padding: 8px 10px; vertical-align: top;">Em <strong>Manage Account &gt; SSL Certificates</strong>, clique em <strong>Generate Certificate</strong>. Depois, force o https no site (&quot;Certificado SSL, PHP e domínios adicionais&quot;).</td></tr>
+<tr><td style="border: 1px solid #cbd5e1; padding: 8px 10px; vertical-align: top;">E-mail não chega</td><td style="border: 1px solid #cbd5e1; padding: 8px 10px; vertical-align: top;">O MX não aponta para a hospedagem, a caixa está cheia ou o endereço está digitado errado.</td><td style="border: 1px solid #cbd5e1; padding: 8px 10px; vertical-align: top;">Confira o MX (&quot;Apontar o domínio para a hospedagem&quot;), o espaço da caixa e o endereço. Teste enviando de outro serviço de e-mail.</td></tr>
+<tr><td style="border: 1px solid #cbd5e1; padding: 8px 10px; vertical-align: top;">E-mail enviado cai no spam</td><td style="border: 1px solid #cbd5e1; padding: 8px 10px; vertical-align: top;">Falta SPF ou DKIM.</td><td style="border: 1px solid #cbd5e1; padding: 8px 10px; vertical-align: top;">Ative o DKIM no Plesk, em <strong>E-mail &gt; Configurações de e-mail</strong>, e confira o SPF em <strong>Hospedagem &amp; DNS &gt; DNS</strong>. Veja a seção sobre spam em &quot;Contas de e-mail: criar, redirecionar e configurar&quot;.</td></tr>
+<tr><td style="border: 1px solid #cbd5e1; padding: 8px 10px; vertical-align: top;">O Outlook pede a senha toda hora</td><td style="border: 1px solid #cbd5e1; padding: 8px 10px; vertical-align: top;">Senha errada ou antiga, usuário sem o domínio, ou porta sem SSL/TLS.</td><td style="border: 1px solid #cbd5e1; padding: 8px 10px; vertical-align: top;">Use o e-mail completo como usuário, IMAP 993 e SMTP 465 ou 587, com autenticação ligada. Digite de novo a senha da conta.</td></tr>
+<tr><td style="border: 1px solid #cbd5e1; padding: 8px 10px; vertical-align: top;">Erro 500 no site</td><td style="border: 1px solid #cbd5e1; padding: 8px 10px; vertical-align: top;">Erro em um plugin, no tema, em um arquivo <code>.htaccess</code> ou versão do PHP incompatível.</td><td style="border: 1px solid #cbd5e1; padding: 8px 10px; vertical-align: top;">Desative o último plugin instalado. Em <strong>PHP Settings</strong>, teste outra versão do PHP. Se continuar, abra um ticket.</td></tr>
+<tr><td style="border: 1px solid #cbd5e1; padding: 8px 10px; vertical-align: top;">Disco cheio ou caixa de e-mail cheia</td><td style="border: 1px solid #cbd5e1; padding: 8px 10px; vertical-align: top;">O espaço do plano ou da caixa acabou.</td><td style="border: 1px solid #cbd5e1; padding: 8px 10px; vertical-align: top;">Apague arquivos, backups antigos e e-mails desnecessários. Veja o uso no Plesk. Se precisar de mais espaço, peça um upgrade (<strong>Ações &gt; Criar Pedido de Upgrade/Downgrade</strong>).</td></tr>
+<tr><td style="border: 1px solid #cbd5e1; padding: 8px 10px; vertical-align: top;">O Calendário não aparece no webmail</td><td style="border: 1px solid #cbd5e1; padding: 8px 10px; vertical-align: top;">O recurso ainda não está ativo para o seu domínio ou servidor.</td><td style="border: 1px solid #cbd5e1; padding: 8px 10px; vertical-align: top;">Abra um ticket informando o domínio; o suporte verifica.</td></tr>
+<tr><td style="border: 1px solid #cbd5e1; padding: 8px 10px; vertical-align: top;">O celular não sincroniza a agenda</td><td style="border: 1px solid #cbd5e1; padding: 8px 10px; vertical-align: top;">O endereço do servidor de agenda está errado, ou a primeira caixa do domínio é recente.</td><td style="border: 1px solid #cbd5e1; padding: 8px 10px; vertical-align: top;">Use <code>dav.seudominio.com.br</code> como endereço do servidor. Após criar a primeira caixa do domínio, aguarde <strong>até 24 horas</strong>. Se passar disso, abra um ticket.</td></tr>
+</tbody>
+</table>
+</div>
+
+<div style="background: #fffbeb; border-left: 4px solid #d97706; padding: 12px 16px; margin: 16px 0; border-radius: 4px;">
+<p style="margin: 0; color: #78350f;"><strong>Antes de mexer em qualquer coisa</strong>, faça um backup do site. Assim, se algo piorar, você volta ao ponto anterior (veja &quot;Backup e restauração&quot;).</p>
+</div>
+
+<a id="quando-chamar" name="quando-chamar"></a>
+<h2>Quando abrir um ticket</h2>
+
+<ul>
+<li>O problema continua depois de seguir a solução da tabela.</li>
+<li>A mensagem de erro não está na lista.</li>
+<li>O Calendário não aparece no webmail.</li>
+</ul>
+
+<a id="suporte" name="suporte"></a>
+<h2>Ainda precisa de ajuda?</h2>
+
+<p>Abra um ticket e nossa equipe responde. Informe o domínio da hospedagem e descreva o que acontece, com a mensagem de erro se houver.</p>
+
+<ul>
+<li>Pela Área do Cliente: <strong>Suporte</strong> &gt; <strong>Abrir Ticket</strong>, departamento <strong>NOC - Datacenter</strong>.</li>
+<li>Pelo telefone: <strong>0800 042 0909</strong>.</li>
+</ul>
+
+<p><a style="display: inline-block; background: #0369a1; color: #fff; padding: 10px 20px; border-radius: 4px; text-decoration: none; font-weight: 600;" href="https://novo.ntweb.net.br/clientarea.php" target="_blank" rel="noopener noreferrer">Abrir ticket na Área do Cliente</a></p>
+
+<div style="background: #fef2f2; border-left: 4px solid #dc2626; padding: 12px 16px; margin: 16px 0; border-radius: 4px;">
+<p style="margin: 0; color: #7f1d1d;"><strong>Nunca envie senhas em um ticket.</strong> Se precisarmos acessar algo, orientamos o caminho seguro.</p>
+</div>
+
+<!-- WHMCS Metadata -->
+<!--
+Título: Problemas comuns
+Categoria: NT Host
+Tags: nt-host, hospedagem, plesk, problemas, suporte
+-->
